@@ -1,0 +1,156 @@
+[
+  {
+    "id": "nubank",
+    "name": "Nubank",
+    "aliases": ["nu pagamentos", "nu bank"],
+    "color": "#820AD1",
+    "foreground": "#FFFFFF"
+  },
+  {
+    "id": "itau",
+    "name": "Itaú",
+    "aliases": ["itau"],
+    "color": "#EC7000",
+    "foreground": "#FFFFFF"
+  },
+  {
+    "id": "bancodobrasil",
+    "name": "Banco do Brasil",
+    "aliases": ["banco do brasil", "bb"],
+    "color": "#003D7A",
+    "foreground": "#FFDD00"
+  },
+  {
+    "id": "bradesco",
+    "name": "Bradesco",
+    "aliases": ["bradesco"],
+    "color": "#CC092F",
+    "foreground": "#FFFFFF"
+  },
+  {
+    "id": "santander",
+    "name": "Santander",
+    "aliases": ["santander"],
+    "color": "#EC0000",
+    "foreground": "#FFFFFF"
+  },
+  {
+    "id": "caixa",
+    "name": "Caixa Econômica Federal",
+    "aliases": ["caixa"],
+    "color": "#0066A1",
+    "foreground": "#FFFFFF"
+  },
+  {
+    "id": "inter",
+    "name": "Inter",
+    "aliases": ["banco inter", "inter"],
+    "color": "#FF7A00",
+    "foreground": "#FFFFFF"
+  },
+  {
+    "id": "c6",
+    "name": "C6 Bank",
+    "aliases": ["c6"],
+    "color": "#121212",
+    "foreground": "#ffffff"
+  },
+  {
+    "id": "btg",
+    "name": "BTG Pactual",
+    "aliases": ["btg"],
+    "color": "#001E62",
+    "foreground": "#FFFFFF"
+  },
+  {
+    "id": "xp",
+    "name": "XP",
+    "aliases": ["xp"],
+    "color": "#ffffff",
+    "foreground": "#000000"
+  },
+  {
+    "id": "picpay",
+    "name": "PicPay",
+    "aliases": ["picpay"],
+    "color": "#21C25E",
+    "foreground": "#ffffff"
+  },
+  {
+    "id": "mercadopago",
+    "name": "Mercado Pago",
+    "aliases": ["mercado pago", "mercadopago"],
+    "color": "#00BCFF",
+    "foreground": "#0A0080"
+  },
+  {
+    "id": "sicoob",
+    "name": "Sicoob",
+    "aliases": ["sicoob"],
+    "color": "#003B43",
+    "foreground": "#B8D335"
+  },
+  {
+    "id": "sicredi",
+    "name": "Sicredi",
+    "aliases": ["sicredi"],
+    "color": "#ffffff",
+    "foreground": "#3DAE2B"
+  },
+  {
+    "id": "neon",
+    "name": "Neon",
+    "aliases": ["neon"],
+    "color": "#161C3E",
+    "foreground": "#01C4E0"
+  },
+  {
+    "id": "safra",
+    "name": "Safra",
+    "aliases": ["safra"],
+    "color": "#151D43",
+    "foreground": "#C3AC6C"
+  },
+  {
+    "id": "pan",
+    "name": "Banco Pan",
+    "aliases": ["banco pan", "pan"],
+    "color": "#FFFFFF",
+    "foreground": "#414141"
+  },
+  {
+    "id": "pagbank",
+    "name": "PagBank",
+    "aliases": ["pagbank", "pagseguro"],
+    "color": "#42A936",
+    "foreground": "#000000"
+  },
+  {
+    "id": "original",
+    "name": "Banco Original",
+    "aliases": ["original"],
+    "color": "#00A857",
+    "foreground": "#ffffff"
+  },
+  {
+    "id": "next",
+    "name": "Next",
+    "aliases": ["next"],
+    "color": "#00FF5F",
+    "foreground": "#000000"
+  },
+  {
+    "id": "bmg",
+    "name": "BMG",
+    "aliases": ["bmg"],
+    "color": "#F26321",
+    "foreground": "#FFFFFF"
+  },
+  {
+    "id": "rico",
+    "name": "Rico",
+    "aliases": ["rico", "rico investimentos"],
+    "color": "#010042",
+    "foreground": "#FF5200"
+  }
+]

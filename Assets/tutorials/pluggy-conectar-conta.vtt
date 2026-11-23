@@ -1,0 +1,193 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:06.042
+Vamos acessar o site da Pluggy e localizar os dados necessários para o Optimus Finance.
+
+00:00:05.992 --> 00:00:10.889
+Estas são capturas reais, com informações privadas ocultadas.
+
+00:00:10.889 --> 00:00:14.175
+Abra dashboard ponto pluggy ponto ai.
+
+00:00:14.175 --> 00:00:17.668
+Se já tiver conta, entre com seu acesso.
+
+00:00:18.850 --> 00:00:22.769
+Se ainda não tiver cadastro, escolha Registrar.
+
+00:00:22.719 --> 00:00:27.590
+Preencha os campos e conclua as verificações solicitadas pela Pluggy.
+
+00:00:27.590 --> 00:00:32.010
+Para uso pessoal, utilize a mesma conta do Meu Pluggy.
+
+00:00:32.010 --> 00:00:36.804
+Nele, conecte seus bancos pelo fluxo oficial de autorização.
+
+00:00:36.804 --> 00:00:40.309
+Nunca informe a senha bancária no Optimus.
+
+00:00:41.475 --> 00:00:46.386
+Depois de entrar no Dashboard, abra Aplicações no menu à esquerda.
+
+00:00:46.336 --> 00:00:51.414
+A tela mostra suas aplicações e o botão Novo, destacado à direita.
+
+00:00:51.414 --> 00:00:57.457
+Se já existe uma aplicação usada pelo Optimus, você pode usar essa mesma aplicação.
+
+00:00:58.725 --> 00:01:05.389
+Para criar uma aplicação, clique em Novo e dê um nome fácil de reconhecer, como Optimus pessoal.
+
+00:01:05.339 --> 00:01:08.161
+Depois, confirme em Criar.
+
+00:01:08.161 --> 00:01:11.898
+Aqui mostramos o formulário com um nome de exemplo.
+
+00:01:11.898 --> 00:01:15.494
+Não criamos outra aplicação durante a captura.
+
+00:01:16.725 --> 00:01:21.443
+Na aplicação, localize Client ID e o ícone para copiar.
+
+00:01:21.393 --> 00:01:24.434
+Esse código identifica a aplicação.
+
+00:01:24.434 --> 00:01:30.233
+Ao lado, o atalho Configurar abre os detalhes e as orientações sobre o Client Secret.
+
+00:01:30.233 --> 00:01:35.195
+Use sempre as credenciais da mesma aplicação que contém sua conexão.
+
+00:01:36.350 --> 00:01:42.009
+Nas configurações, a seção Credenciais mostra Client ID e Client Secret.
+
+00:01:41.959 --> 00:01:45.670
+O segredo aparece uma única vez quando é gerado.
+
+00:01:45.670 --> 00:01:47.977
+Guarde-o com segurança.
+
+00:01:47.977 --> 00:01:52.616
+O botão Gerar novo secret invalida o anterior imediatamente.
+
+00:01:52.616 --> 00:01:57.281
+Por isso, não o utilize apenas para visualizar o segredo antigo.
+
+00:01:57.281 --> 00:02:00.503
+Nenhuma chave foi gerada nesta captura.
+
+00:02:01.725 --> 00:02:05.206
+Volte a Aplicações e clique em Iniciar Demo.
+
+00:02:05.156 --> 00:02:10.839
+Essa página permite conectar contas e consultar os itens já vinculados à aplicação.
+
+00:02:10.839 --> 00:02:14.988
+Para dados pessoais reais, siga o caminho Meu Pluggy.
+
+00:02:14.988 --> 00:02:18.571
+Sandbox contém apenas dados de teste.
+
+00:02:19.850 --> 00:02:24.748
+No Demo, clique em Conectar Conta, no canto superior direito.
+
+00:02:24.698 --> 00:02:28.861
+Para o fluxo pessoal, escolha o conector MeuPluggy.
+
+00:02:28.861 --> 00:02:37.095
+Se ele não aparecer, confira a configuração de conectores da aplicação, conforme o guia oficial disponível junto ao vídeo.
+
+00:02:38.350 --> 00:02:43.828
+A janela da Pluggy apresenta informações de segurança, privacidade e termos.
+
+00:02:43.778 --> 00:02:46.111
+Leia antes de continuar.
+
+00:02:46.111 --> 00:02:51.162
+Depois, siga a seleção do MeuPluggy e a autorização com sua conta.
+
+00:02:51.162 --> 00:02:57.580
+Não avançamos nessa etapa durante a captura, para não realizar outra autorização na sua conta.
+
+00:02:58.850 --> 00:03:05.089
+Após concluir a conexão, ela aparece em Itens Conectados, na mesma página Demo.
+
+00:03:05.039 --> 00:03:09.253
+Selecione a conexão que corresponde ao banco desejado.
+
+00:03:09.253 --> 00:03:12.113
+A lista pode ter vários itens.
+
+00:03:12.113 --> 00:03:15.735
+Cada conexão possui seu próprio identificador.
+
+00:03:16.975 --> 00:03:24.206
+Nos detalhes, o Item ID aparece acima do nome do conector, acompanhado de um ícone para copiar.
+
+00:03:24.156 --> 00:03:27.867
+Este é o código que você deve cadastrar no Optimus.
+
+00:03:27.867 --> 00:03:31.785
+Ele não é agência, número da conta ou Account ID.
+
+00:03:31.785 --> 00:03:35.316
+O valor real foi ocultado nesta demonstração.
+
+00:03:36.600 --> 00:03:40.042
+Agora vamos preencher no Optimus Finance.
+
+00:03:39.992 --> 00:03:42.402
+Abra Conecte sua Conta.
+
+00:03:42.402 --> 00:03:49.077
+No card Credenciais da aplicação Pluggy, clique em Configurar credenciais para abrir estes campos.
+
+00:03:49.077 --> 00:03:54.180
+Cole o Client ID da sua aplicação no primeiro campo, destacado na tela.
+
+00:03:54.180 --> 00:03:59.142
+Os valores mostrados aqui são fictícios, apenas para demonstrar.
+
+00:04:00.350 --> 00:04:07.542
+No campo Client Secret, logo abaixo, cole o segredo que você guardou ao criar a aplicação na Pluggy.
+
+00:04:07.492 --> 00:04:10.443
+O texto fica oculto por segurança.
+
+00:04:10.443 --> 00:04:15.804
+Não confunda este campo com o Item ID: aqui vai o segredo da aplicação.
+
+00:04:16.975 --> 00:04:24.361
+Depois de preencher os dois campos, clique em Salvar credenciais da aplicação, no botão azul destacado.
+
+00:04:24.311 --> 00:04:29.401
+Essas credenciais serão reutilizadas nas conexões cadastradas abaixo.
+
+00:04:29.401 --> 00:04:34.349
+A demonstração usa uma sessão de teste e não salva credenciais reais.
+
+00:04:35.600 --> 00:04:39.145
+Desça até o card Cadastrar conexão Pluggy.
+
+00:04:39.095 --> 00:04:44.521
+Em Nome da conexão, você pode escrever um nome como Meu banco principal.
+
+00:04:44.521 --> 00:04:52.923
+No campo Item ID da conta, destacado agora, cole o identificador que copiou nos detalhes do item na página Demo da Pluggy.
+
+00:04:52.923 --> 00:04:56.621
+Não cole aqui o Client ID nem o Client Secret.
+
+00:04:57.850 --> 00:05:02.169
+Com o Item ID preenchido, clique em Salvar e sincronizar.
+
+00:05:02.119 --> 00:05:08.897
+Aguarde a conclusão e confira as contas, cartões e investimentos disponibilizados pela instituição.
+
+00:05:08.897 --> 00:05:15.302
+Para outro banco, cadastre o Item ID correspondente usando as credenciais da mesma aplicação.
+
+00:05:15.302 --> 00:05:20.611
+Pronto: você já viu onde preencher cada informação no Optimus Finance.

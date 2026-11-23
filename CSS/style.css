@@ -1,0 +1,4631 @@
+/* Atributo semântico tem precedência sobre o display dos componentes. */
+[hidden] {
+  display: none !important;
+}
+#reports-dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+}
+#reports-dialog .subtitle { margin-top: 18px; line-height: 1.55; }
+#report-error { color: #b33248; }
+.connection-tutorial summary {
+  cursor: pointer;
+  color: var(--ink);
+  font-size: calc(17px + var(--web-font-increase, 0px));
+  font-weight: 650;
+  line-height: 1.4;
+}
+.connection-tutorial video {
+  display: block;
+  width: 100%;
+  max-width: 1120px;
+  aspect-ratio: 16 / 9;
+  margin: 18px auto;
+  border-radius: 12px;
+  background: #082b40;
+}
+.connection-tutorial .subtitle { margin-top: 14px; line-height: 1.6; }
+.connection-tutorial .toolbar { flex-wrap: wrap; gap: 14px; }
+
+.monthly-summary-panel .summary-future {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid #cbdcf2;
+  border-radius: 12px;
+  background: #f3f7fd;
+}
+.monthly-summary-panel .summary-future .expense { margin: 0; padding: 0; }
+.monthly-summary-panel .summary-future .expense strong { color: #245393; }
+.monthly-summary-panel .summary-future .subtitle { margin: 8px 0 0; line-height: 1.5; }
+.sidebar {
+  overflow-y: auto;
+}
+.payment-proof {
+  display: block;
+  margin-top: 7px;
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  line-height: 1.5;
+  color: var(--muted);
+  white-space: normal;
+  min-width: 150px;
+}
+
+/* Cartões visuais: arte vetorial e cores locais de cada instituição. */
+.bank-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.exchange-logo {
+  display: inline-block;
+  object-fit: contain;
+  border-radius: 10px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.exchange-choices {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.exchange-choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid var(--line);
+  background: #fafcff;
+  border-radius: 10px;
+  color: var(--ink);
+  font-size: calc(13px + var(--web-font-increase, 0px));
+  font-weight: 600;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.exchange-choice.active {
+  border-color: var(--blue);
+  background: #edf5ff;
+  box-shadow: 0 0 0 1px var(--blue);
+}
+.exchange-choice:hover {
+  border-color: #9bbff1;
+}
+.exchange-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.exchange-heading small {
+  display: block;
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  color: var(--muted);
+  font-weight: 400;
+  margin-top: 5px;
+}
+@media (max-width: 620px) {
+  .exchange-choices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .exchange-choice {
+    flex-direction: column;
+    padding: 12px 5px;
+    gap: 8px;
+    font-size: calc(11px + var(--web-font-increase, 0px));
+  }
+}
+.credit-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
+  gap: 24px;
+}
+.credit-card-item {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fbfcff;
+  max-width: 440px;
+}
+.credit-card-art {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 22px;
+  border-radius: 17px;
+  color: var(--bank-ink, #fff);
+  background:
+    radial-gradient(ellipse at 110% 0%, #ffffff30, transparent 58%),
+    radial-gradient(ellipse at -20% 110%, #00000038, transparent 70%), var(--bank-color, #173f78);
+  box-shadow: 0 12px 24px #122d5026;
+  border: 1px solid #ffffff25;
+  min-height: 225px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.credit-card-art::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #ffffff15;
+  border-radius: 50%;
+  right: -120px;
+  top: 10px;
+  box-shadow:
+    0 0 0 28px #ffffff06,
+    0 0 0 56px #ffffff04;
+  pointer-events: none;
+}
+.credit-card-top,
+.credit-card-bank,
+.credit-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.credit-card-bank {
+  justify-content: flex-start;
+  font-size: calc(13px + var(--web-font-increase, 0px));
+  font-weight: 650;
+}
+.credit-card-bank img {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+.credit-card-tag {
+  font-size: calc(8px + var(--web-font-increase, 0px));
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+.credit-card-chip-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.credit-card-chip {
+  width: 38px;
+  height: 29px;
+}
+.credit-card-chip-row > svg:last-child {
+  opacity: 0.65;
+  transform: rotate(0deg);
+}
+.credit-card-number {
+  font-size: calc(17px + var(--web-font-increase, 0px));
+  letter-spacing: 2px;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+.credit-card-bottom {
+  margin-top: auto;
+  align-items: flex-end;
+}
+.credit-card-bottom > div {
+  min-width: 0;
+}
+.credit-card-bottom small {
+  display: block;
+  font-size: calc(7px + var(--web-font-increase, 0px));
+  letter-spacing: 1.3px;
+  opacity: 0.7;
+  margin-bottom: 5px;
+}
+.credit-card-bottom strong {
+  display: block;
+  font-size: calc(11px + var(--web-font-increase, 0px));
+  font-weight: 550;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.credit-card-due {
+  text-align: right;
+  flex-shrink: 0;
+}
+.credit-card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 23px 2px 12px;
+}
+.credit-card-info .label {
+  display: block;
+  margin-bottom: 5px;
+}
+.credit-card-info strong {
+  font-size: calc(20px + var(--web-font-increase, 0px));
+  letter-spacing: -0.5px;
+}
+.credit-card-actions {
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-top: 14px;
+}
+.credit-card-actions .button {
+  flex: 1;
+  padding: 9px 12px;
+}
+.credit-card-actions .button:last-child {
+  color: #60708a;
+  background: white;
+  border-color: var(--line);
+}
+.credit-card-actions .icon {
+  width: 14px;
+  height: 14px;
+}
+.card-preview {
+  max-width: 390px;
+  margin: 0 auto 25px;
+}
+.card-preview .credit-card-art {
+  min-height: 220px;
+}
+@media (max-width: 620px) {
+  .credit-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .credit-card-item {
+    max-width: none;
+    padding: 10px;
+  }
+  .credit-card-art {
+    padding: 18px;
+  }
+}
+
+/* Percentuais do planejamento de renda, com campos acessíveis no celular. */
+.budget-percentages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.budget-percentages label {
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  min-height: 25px;
+}
+#budget-form {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.date-chip.period-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  padding: 10px 12px;
+}
+.bill-summary {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+.period-filter label {
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  margin: 0 0 3px;
+  color: var(--muted);
+}
+.period-filter input {
+  width: 165px;
+  padding: 3px 0;
+  border: 0;
+  border-radius: 0;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  background: transparent;
+}
+.period-reset {
+  border: 0;
+  background: #edf4ff;
+  color: var(--blue);
+  padding: 7px;
+  border-radius: 5px;
+  font-size: calc(10px + var(--web-font-increase, 0px));
+}
+@media (max-width: 900px) {
+  .page-heading:has(.period-filter) {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 620px) {
+  .budget-percentages {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .budget-percentages label {
+    min-height: 0;
+  }
+}
+
+/* Rosca de investimentos: a legenda continua legível com muitos ativos. */
+.investment-distribution .donut-layout {
+  justify-content: flex-start;
+  gap: 48px;
+}
+.investment-legend {
+  max-height: 290px;
+  overflow: auto;
+  padding-right: 12px;
+  flex: 1;
+}
+.investment-legend .legend-item {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 620px) {
+  .investment-distribution .donut-layout {
+    flex-direction: column;
+    gap: 25px;
+  }
+  .investment-legend {
+    width: 100%;
+    flex: auto;
+  }
+}
+
+/* BLOCO 1 — Tokens visuais: altere aqui as cores e medidas compartilhadas. */
+:root {
+  --navy: #082a54;
+  --blue: #0068f5;
+  --green: #00bb88;
+  --ink: #101d3b;
+  --muted: #718099;
+  --line: #e8edf6;
+  --surface: #fff;
+  --background: #f3f6fc;
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+  color: var(--ink);
+  background: var(--background);
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #80b5ff;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* BLOCO 2 — Estrutura fixa no desktop e navegação adaptada no celular. */
+.sidebar {
+  width: 238px;
+  background: linear-gradient(155deg, #082e5d, #061e3e);
+  position: fixed;
+  inset: 0 auto 0 0;
+  padding: 37px 17px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px 42px;
+  font-size: calc(19px + var(--web-font-increase, 0px));
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.brand svg {
+  width: 53px;
+  flex-shrink: 0;
+}
+
+.brand-caption {
+  display: block;
+  font-size: calc(6px + var(--web-font-increase, 0px));
+  letter-spacing: 1.3px;
+  color: #8ba6c7;
+  margin-top: 10px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 15px 16px;
+  border-radius: 8px;
+  margin: 6px 0;
+  font-size: calc(13px + var(--web-font-increase, 0px));
+  color: #c6d4e7;
+  transition: 0.2s;
+}
+
+.nav-link:hover {
+  background: #ffffff0d;
+  color: white;
+}
+
+.nav-link.active {
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 5px 18px #005fea40;
+}
+
+.icon {
+  width: 21px;
+  height: 21px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  border-top: 1px solid #ffffff20;
+  padding: 24px 13px 0;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  color: #c6d4e7;
+}
+
+.sidebar-bottom small {
+  display: block;
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  color: #829ab7;
+  margin-top: 10px;
+}
+
+.security-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #0dd49d;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.workspace {
+  margin-left: 238px;
+  min-height: 100vh;
+}
+
+.topbar {
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding: 0 44px;
+  background: #ffffff80;
+}
+
+.topbar > span {
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  letter-spacing: 2px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.topbar > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  width: 33px;
+  height: 33px;
+  background: #dce8fa;
+  border: 4px solid #edf3ff;
+  color: #38639f;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  font-weight: 700;
+}
+
+.profile {
+  border: 0;
+  background: none;
+  color: #253653;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+}
+
+.profile span {
+  margin-left: 14px;
+}
+
+.icon-button {
+  border: 0;
+  background: none;
+  color: #476080;
+  padding: 7px;
+  display: inline-flex;
+  align-items: center;
+  font-size: calc(25px + var(--web-font-increase, 0px));
+}
+
+main {
+  max-width: 1580px;
+  margin: auto;
+  padding: 37px 44px 30px;
+}
+
+footer {
+  padding: 22px 44px;
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  color: #8c99ac;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* BLOCO 3 — Cartões, tabelas e hierarquia do painel. */
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 29px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: var(--blue);
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  font-weight: 700;
+  margin-bottom: 9px;
+}
+
+h1 {
+  font-size: calc(29px + var(--web-font-increase, 0px));
+  letter-spacing: -1px;
+  margin: 0 0 8px;
+}
+
+h2 {
+  font-size: calc(15px + var(--web-font-increase, 0px));
+  margin: 0;
+  letter-spacing: -0.25px;
+}
+
+p {
+  line-height: 1.6;
+}
+
+.subtitle {
+  font-size: calc(13px + var(--web-font-increase, 0px));
+  color: var(--muted);
+  margin: 0;
+}
+
+.date-chip {
+  padding: 10px 14px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: calc(11px + var(--web-font-increase, 0px));
+  color: #61718d;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 20px #233f7310;
+}
+
+.panel-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 15px;
+}
+
+.panel-title h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.panel-title .icon {
+  color: var(--blue);
+  width: 25px;
+  height: 25px;
+}
+
+.label {
+  font-size: calc(11px + var(--web-font-increase, 0px));
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.value {
+  font-size: calc(23px + var(--web-font-increase, 0px));
+  font-weight: 750;
+  letter-spacing: -0.6px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: var(--blue);
+  color: white;
+  padding: 11px 16px;
+  border: 1px solid var(--blue);
+  border-radius: 6px;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  font-weight: 600;
+}
+
+.button:hover {
+  filter: brightness(0.96);
+}
+
+.button.secondary {
+  background: #f4f8ff;
+  color: var(--blue);
+  border-color: #ccddfb;
+}
+
+.button .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.donut-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px 0 22px;
+}
+
+.donut {
+  width: 196px;
+  height: 196px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.donut-inner {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.donut-inner strong {
+  font-size: calc(19px + var(--web-font-increase, 0px));
+  letter-spacing: -0.5px;
+}
+
+.donut-inner small {
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.legend {
+  display: grid;
+  gap: 24px;
+}
+
+.legend-item {
+  font-size: calc(11px + var(--web-font-increase, 0px));
+  display: flex;
+  gap: 9px;
+  line-height: 1.5;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.legend-item small {
+  display: block;
+  color: var(--muted);
+  font-size: calc(10px + var(--web-font-increase, 0px));
+}
+
+.expense {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  gap: 10px;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+}
+
+.expense strong {
+  display: block;
+  font-size: calc(13px + var(--web-font-increase, 0px));
+}
+
+.expense small {
+  color: var(--muted);
+  font-size: calc(10px + var(--web-font-increase, 0px));
+}
+
+.expense .amount {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.text-link {
+  display: block;
+  border: 0;
+  background: none;
+  color: var(--blue);
+  font-size: calc(11px + var(--web-font-increase, 0px));
+  margin: 18px 0 0 auto;
+  padding: 0;
+}
+
+.investment-banner {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 35px;
+}
+
+.investment-banner .panel-title {
+  margin-bottom: 22px;
+}
+
+.stats-row {
+  display: flex;
+  gap: 55px;
+}
+
+.positive {
+  color: #00a77d;
+  font-size: calc(11px + var(--web-font-increase, 0px));
+}
+
+.chart {
+  width: 100%;
+  height: 225px;
+  display: block;
+}
+
+.chart text {
+  font-family: inherit;
+  fill: #8a98ae;
+  font-size: calc(11px + var(--web-font-increase, 0px));
+}
+
+.chart-empty {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  color: var(--muted);
+  font-size: calc(12px + var(--web-font-increase, 0px));
+}
+
+.table-wrap {
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  white-space: nowrap;
+}
+
+th {
+  background: #f6f8fd;
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  font-weight: 600;
+  color: #6b7991;
+  padding: 15px;
+}
+
+td {
+  padding: 21px 15px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+.institution {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.bank-mark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: #edf3ff;
+  border-radius: 8px;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  font-weight: 850;
+  color: #0068f5;
+}
+
+.bank-mark.nu {
+  background: #f4eaff;
+  color: #8a00ee;
+  font-size: calc(22px + var(--web-font-increase, 0px));
+}
+
+.bank-mark.it {
+  background: #063eae;
+  color: #ffdf00;
+}
+
+.bank-mark.sa {
+  background: #fff0f1;
+  color: #eb2636;
+}
+
+.bank-mark.pi {
+  background: #ddf9ef;
+  color: #00ae7b;
+}
+
+.pill {
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  border-radius: 20px;
+  padding: 5px 11px;
+  background: #d9f8ed;
+  color: #078367;
+}
+
+.pill.blocked {
+  background: #e8edf7;
+  color: #596a89;
+}
+
+.actions {
+  display: flex;
+  gap: 9px;
+}
+
+.actions button {
+  border: 0;
+  background: none;
+  color: var(--blue);
+  padding: 4px;
+}
+
+.actions button:last-child {
+  color: #6f809b;
+}
+
+.actions .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.search {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: calc(11px + var(--web-font-increase, 0px));
+  width: 190px;
+  background: #fafcff;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+html.web-readable .metric-grid.bank-statement-summary {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(4px, 1vw, 18px);
+}
+
+html.web-readable .metric-grid.bank-statement-summary > .metric {
+  display: block;
+  min-width: 0;
+  padding: clamp(4px, 1vw, 22px);
+  container-type: inline-size;
+}
+
+html.web-readable .metric-grid.bank-statement-summary > .metric .label {
+  font-size: clamp(7px, 6cqi, 14px);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+html.web-readable .metric-grid.bank-statement-summary > .metric .value {
+  font-size: clamp(5px, 9cqi, 30px);
+  line-height: 1.25;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+
+html.web-readable .metric-grid.bank-statement-summary > .metric small {
+  display: block;
+  font-size: clamp(6px, 5cqi, 12px);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+html.web-readable .metric-grid.card-bill-metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(4px, 1vw, 18px);
+}
+
+html.web-readable .card-bill-metrics > .metric {
+  display: block;
+  min-width: 0;
+  padding: clamp(4px, 1vw, 22px);
+  container-type: inline-size;
+}
+
+html.web-readable .card-bill-metrics > .metric .label {
+  font-size: clamp(7px, 6cqi, 14px);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+html.web-readable .card-bill-metrics > .metric .value {
+  font-size: clamp(5px, 9cqi, 30px);
+  line-height: 1.25;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+
+.metric {
+  padding: 22px;
+}
+
+.metric .value {
+  margin: 10px 0;
+}
+
+.invest-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 25px;
+}
+
+.invest-stat {
+  background: #fafcff;
+  border: 1px solid var(--line);
+  padding: 22px;
+  border-radius: 9px;
+  margin-bottom: 14px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.admin-card {
+  text-align: center;
+  padding: 33px 25px;
+}
+
+.admin-card > .icon {
+  width: 34px;
+  height: 34px;
+  color: var(--blue);
+  margin-bottom: 20px;
+}
+
+.admin-card p {
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  color: var(--muted);
+  min-height: 38px;
+  margin: 12px 0 24px;
+}
+
+.empty {
+  padding: 35px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.notice {
+  border: 1px solid #f1d499;
+  background: #fff9ed;
+  color: #7c5a19;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  margin-bottom: 22px;
+  line-height: 1.7;
+}
+
+.loading {
+  padding: 80px;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* BLOCO 4 — Modal, feedback e campos de formulário. */
+dialog {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px;
+  width: min(490px, 92vw);
+  color: var(--ink);
+  box-shadow: 0 25px 100px #082a5433;
+}
+
+dialog::backdrop {
+  background: #09234488;
+  backdrop-filter: blur(4px);
+}
+
+.dialog-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dialog-heading h2 {
+  font-size: calc(20px + var(--web-font-increase, 0px));
+}
+
+label {
+  display: block;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  font-weight: 600;
+  margin: 15px 0 7px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 11px 12px;
+  background: white;
+  border: 1px solid #dce3ee;
+  border-radius: 6px;
+  color: var(--ink);
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid #b8d5ff;
+  border-color: var(--blue);
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+#form-error {
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  color: #c13442;
+}
+
+#toast {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--navy);
+  color: white;
+  padding: 15px 22px;
+  border-radius: 8px;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  z-index: 30;
+  display: none;
+}
+
+#toast.visible {
+  display: block;
+}
+
+/* BLOCO 5 — Quebras responsivas preservam leitura e acesso às ações. */
+@media (min-width: 1500px) {
+  main {
+    padding-top: 48px;
+  }
+
+  .donut-layout {
+    padding: 35px 0;
+  }
+
+  .donut {
+    width: 225px;
+    height: 225px;
+  }
+
+  .donut-inner {
+    width: 167px;
+    height: 167px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .sidebar {
+    width: 205px;
+    padding-inline: 12px;
+  }
+
+  .workspace {
+    margin-left: 205px;
+  }
+
+  main {
+    padding: 28px 25px;
+  }
+
+  .topbar {
+    padding-inline: 25px;
+  }
+
+  .donut {
+    width: 155px;
+    height: 155px;
+  }
+
+  .donut-inner {
+    width: 115px;
+    height: 115px;
+  }
+
+  .donut-inner strong {
+    font-size: calc(15px + var(--web-font-increase, 0px));
+  }
+
+  .donut-layout {
+    gap: 12px;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+  }
+
+  .admin-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .investment-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .invest-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .invest-stats {
+    display: flex;
+    gap: 15px;
+  }
+
+  .invest-stat {
+    flex: 1;
+  }
+
+  .page-heading {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .date-chip {
+    display: none;
+  }
+
+  .metric-grid {
+    gap: 10px;
+  }
+
+  .value {
+    font-size: calc(20px + var(--web-font-increase, 0px));
+  }
+}
+
+@media (max-width: 620px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    padding: 18px 15px 10px;
+  }
+
+  .brand {
+    padding: 0 0 15px;
+    font-size: calc(15px + var(--web-font-increase, 0px));
+  }
+
+  .brand svg {
+    width: 38px;
+  }
+
+  .brand-caption,
+  .sidebar-bottom {
+    display: none;
+  }
+
+  #navigation {
+    display: flex;
+    overflow: auto;
+    gap: 6px;
+  }
+
+  .nav-link {
+    margin: 0;
+    padding: 10px;
+    white-space: nowrap;
+    font-size: calc(10px + var(--web-font-increase, 0px));
+    gap: 6px;
+  }
+
+  .nav-link .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .workspace {
+    margin-left: 0;
+  }
+
+  .topbar {
+    height: 58px;
+    padding: 0 18px;
+  }
+
+  .topbar > span {
+    font-size: calc(8px + var(--web-font-increase, 0px));
+    letter-spacing: 1px;
+  }
+
+  main {
+    padding: 25px 16px;
+  }
+
+  h1 {
+    font-size: calc(25px + var(--web-font-increase, 0px));
+  }
+
+  .panel-title {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  .donut-layout {
+    justify-content: space-between;
+  }
+
+  .legend {
+    gap: 17px;
+  }
+
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .metric .value {
+    margin: 0;
+  }
+
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    width: 100%;
+  }
+
+  .search {
+    flex: 1;
+    width: 100px;
+  }
+
+  footer {
+    padding: 15px 18px;
+  }
+
+  footer span {
+    display: none;
+  }
+
+  .stats-row {
+    gap: 25px;
+  }
+
+  .invest-stats {
+    display: block;
+  }
+}
+
+/* Entradas e saídas: formulário legível também no celular. */
+.flow-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 16px;
+  margin: 24px 0;
+}
+.flow-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 150px;
+}
+.flow-form input,
+.flow-form select {
+  padding: 12px;
+  border: 1px solid #dce5f3;
+  border-radius: 8px;
+  background: white;
+  color: #142347;
+}
+
+/* Formulários de acesso e cadastro de perfis. */
+.auth-panel {
+  max-width: 480px;
+  margin: 24px auto;
+}
+.auth-panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 18px 0;
+}
+.auth-panel input,
+.auth-panel select {
+  padding: 12px;
+  border: 1px solid #dce5f3;
+  border-radius: 8px;
+  background: white;
+  color: #142347;
+}
+#auth-error,
+#user-error {
+  color: #b42338;
+}
+
+/* BLOCO — Login em duas áreas, com fundo curvo azul/verde e ilustração local. */
+body.login-mode {
+  background: #e9f2ff;
+  display: block;
+  margin: 0;
+}
+.login-mode > .sidebar,
+.login-mode .topbar,
+.login-mode footer {
+  display: none;
+}
+.login-mode .workspace {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+.login-mode #content {
+  padding: 0;
+  max-width: none;
+  margin: 0;
+}
+.login-screen {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  grid-template-columns: 51% 49%;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 80% 35%, #fff 0, #e8f2ff 65%, #c8e0ff 100%);
+  isolation: isolate;
+  color: #09224e;
+}
+.login-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.login-hero {
+  position: relative;
+  padding: 10vh 6vw 330px;
+  min-height: 100vh;
+  color: white;
+}
+.login-hero::after {
+  content: '';
+  position: absolute;
+  inset: 48% 8% 5% 0;
+  background:
+    radial-gradient(circle at 80% 65%, #14e99566, transparent 33%),
+    radial-gradient(circle at 12% 65%, #16bea64d, transparent 30%);
+  z-index: -1;
+}
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.login-brand > svg {
+  width: 128px;
+  flex: none;
+}
+.login-brand > span {
+  font-size: clamp(36px, 4.25vw, 68px);
+  font-weight: 750;
+  letter-spacing: -2.5px;
+  line-height: 1.03;
+}
+.login-brand strong {
+  display: block;
+  color: #46eb8b;
+}
+.login-hero h2 {
+  margin: 44px 0 28px;
+  font-size: clamp(24px, 2.55vw, 40px);
+  font-weight: 450;
+  letter-spacing: -1px;
+  line-height: 1.25;
+  color: white;
+}
+.login-hero h2 strong {
+  color: #48ec8a;
+  font-weight: 700;
+}
+.login-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0;
+  display: grid;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+.login-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: clamp(16px, 1.5vw, 24px);
+  letter-spacing: -0.6px;
+}
+.login-benefits li > span {
+  width: 62px;
+  height: 62px;
+  background: #1164a16b;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.login-benefits svg {
+  width: 34px;
+  height: 34px;
+}
+.login-coins {
+  position: absolute;
+  bottom: 2vh;
+  left: 2vw;
+  width: 90%;
+  height: auto;
+  max-height: 36vh;
+  overflow: visible;
+}
+.login-form-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7vh 3.5vw 7vh 1.3vw;
+}
+.login-card {
+  width: 100%;
+  max-width: 650px;
+  background: #ffffffed;
+  border-radius: 34px;
+  padding: 30px 36px 40px;
+  box-shadow: 0 25px 60px #3285e72b;
+  text-align: center;
+}
+.login-lock {
+  margin: 0 auto 12px;
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: #d8e8ff;
+  color: #0060dc;
+}
+.login-lock svg {
+  width: 50px;
+  height: 58px;
+}
+.login-card h1 {
+  font-size: clamp(26px, 3vw, 46px);
+  font-weight: 750;
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+  margin: 0 0 10px;
+  color: #08214d;
+}
+.login-intro {
+  font-size: clamp(17px, 1.8vw, 27px);
+  color: #49618c;
+  letter-spacing: -0.6px;
+  margin: 0 0 34px;
+}
+.login-field {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: 2px solid #dce4f3;
+  border-radius: 19px;
+  min-height: 72px;
+  padding: 0 22px;
+  margin: 18px 0;
+  background: #ffffff80;
+  transition: border-color 0.15s;
+}
+.login-field:focus-within {
+  border-color: #0676ea;
+  box-shadow: 0 0 0 3px #0676ea14;
+}
+.login-field > span {
+  color: #345686;
+  display: flex;
+  flex: none;
+}
+.login-field > span svg {
+  width: 28px;
+  height: 30px;
+}
+.login-field input {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  background: transparent !important;
+  width: 100%;
+  min-width: 0;
+  padding: 16px 0 !important;
+  font-size: clamp(18px, 1.55vw, 25px);
+  color: #142f5a;
+}
+.login-field input::placeholder {
+  color: #7183a5;
+  opacity: 1;
+}
+.password-toggle {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: none;
+  color: #47628c;
+  cursor: pointer;
+  padding: 4px;
+  flex: none;
+}
+.password-toggle svg {
+  width: 27px;
+  height: 27px;
+}
+.password-toggle[aria-pressed='true'] .eye-slash {
+  display: none;
+}
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 26px 0;
+  color: #09224e;
+  font-size: clamp(15px, 1.35vw, 21px);
+}
+.login-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.login-options input {
+  width: 23px;
+  height: 23px;
+  margin: 0;
+  accent-color: #0064dc;
+}
+.login-forgot {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: #0063ed;
+  font: inherit;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+}
+.login-forgot:hover {
+  text-decoration: underline;
+}
+.login-submit {
+  width: 100%;
+  height: 76px;
+  border: 0;
+  border-radius: 19px;
+  background: linear-gradient(110deg, #0349ce, #0063e8);
+  color: white;
+  font-size: calc(29px + var(--web-font-increase, 0px));
+  font-weight: 650;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  cursor: pointer;
+  box-shadow: 0 5px 12px #0067dd15;
+}
+.login-submit:hover {
+  background: linear-gradient(110deg, #003fb9, #0057d4);
+}
+.login-submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+.login-submit svg {
+  width: 32px;
+  height: 32px;
+}
+.login-safety {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 46px;
+  padding-top: 18px;
+  border-top: 2px solid #eaf0fa;
+  font-size: clamp(14px, 1.25vw, 20px);
+  color: #48628c;
+  letter-spacing: -0.5px;
+}
+.login-safety svg {
+  width: 28px;
+  height: 32px;
+  flex: none;
+}
+.login-card #auth-error:empty {
+  display: none;
+}
+.login-card #auth-error {
+  text-align: left;
+  font-size: calc(15px + var(--web-font-increase, 0px));
+  margin: 12px 0;
+}
+@media (min-width: 1450px) {
+  .login-card {
+    padding: 32px 38px 42px;
+  }
+  .login-lock {
+    width: 122px;
+    height: 122px;
+  }
+  .login-field {
+    min-height: 78px;
+  }
+  .login-intro {
+    margin-bottom: 38px;
+  }
+}
+@media (max-width: 1050px) {
+  .login-hero {
+    padding: 8vh 4vw 260px;
+  }
+  .login-brand {
+    gap: 12px;
+  }
+  .login-brand > svg {
+    width: 90px;
+  }
+  .login-brand > span {
+    letter-spacing: -1.5px;
+  }
+  .login-form-side {
+    padding: 5vh 2.5vw 5vh 0;
+  }
+  .login-card {
+    padding: 28px 22px;
+    border-radius: 28px;
+  }
+  .login-options {
+    font-size: calc(14px + var(--web-font-increase, 0px));
+  }
+  .login-benefits li {
+    gap: 14px;
+  }
+  .login-benefits li > span {
+    width: 50px;
+    height: 50px;
+  }
+  .login-lock {
+    width: 85px;
+    height: 85px;
+  }
+  .login-lock svg {
+    width: 38px;
+    height: 44px;
+  }
+  .login-field {
+    padding: 0 16px;
+    gap: 12px;
+  }
+  .login-safety {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 720px) {
+  .login-screen {
+    display: block;
+    background: linear-gradient(150deg, #e8f3ff, #f8fbff);
+  }
+  .login-background {
+    display: none;
+  }
+  .login-hero {
+    min-height: 0;
+    padding: 30px 24px 24px;
+    background: linear-gradient(120deg, #051c3e, #06416b);
+    border-radius: 0 0 35px 35px;
+  }
+  .login-brand {
+    justify-content: center;
+  }
+  .login-brand > svg {
+    width: 65px;
+  }
+  .login-brand > span {
+    font-size: calc(34px + var(--web-font-increase, 0px));
+    letter-spacing: -1px;
+  }
+  .login-hero h2 {
+    font-size: calc(22px + var(--web-font-increase, 0px));
+    text-align: center;
+    margin: 22px 0 0;
+  }
+  .login-benefits,
+  .login-coins {
+    display: none;
+  }
+  .login-form-side {
+    padding: 24px 18px 36px;
+  }
+  .login-card {
+    max-width: 470px;
+    padding: 25px 24px 28px;
+    border-radius: 26px;
+  }
+  .login-card h1 {
+    font-size: calc(28px + var(--web-font-increase, 0px));
+    letter-spacing: -1px;
+  }
+  .login-intro {
+    font-size: calc(17px + var(--web-font-increase, 0px));
+    margin-bottom: 24px;
+  }
+  .login-lock {
+    width: 74px;
+    height: 74px;
+  }
+  .login-lock svg {
+    width: 34px;
+    height: 40px;
+  }
+  .login-field {
+    min-height: 62px;
+    border-radius: 14px;
+    margin: 15px 0;
+  }
+  .login-field input {
+    font-size: calc(18px + var(--web-font-increase, 0px));
+  }
+  .login-options {
+    margin: 22px 0;
+    font-size: calc(14px + var(--web-font-increase, 0px));
+  }
+  .login-submit {
+    height: 62px;
+    border-radius: 14px;
+    font-size: calc(23px + var(--web-font-increase, 0px));
+  }
+  .login-safety {
+    font-size: calc(14px + var(--web-font-increase, 0px));
+    margin-top: 28px;
+  }
+}
+
+/* Ajustes de altura: mantém a ilustração inteira nas telas de notebook. */
+@media (min-width: 721px) {
+  .login-hero {
+    padding-bottom: 0;
+  }
+  .login-form-side {
+    padding-top: 4.5vh;
+    padding-bottom: 4.5vh;
+  }
+}
+.login-options label {
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+/* Gestão de usuários: senha nova em formulário próprio, sem exibir a senha atual. */
+#user-password-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 18px 0;
+}
+#user-password-form input {
+  padding: 12px;
+  border: 1px solid #dce5f3;
+  border-radius: 8px;
+  width: 100%;
+}
+#user-password-error {
+  color: #b42338;
+}
+
+/* BLOCO — Animação de abertura, com acessibilidade e redução de movimento. */
+.app-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 40%, #fff 5%, #edf5ff 100%);
+  color: #0b2a55;
+  transition:
+    opacity 0.24s ease,
+    visibility 0.24s ease;
+}
+.app-loader.is-loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.loader-brand {
+  width: 106px;
+  height: 106px;
+  padding: 10px;
+  margin-bottom: 24px;
+  border-radius: 28px;
+  background: white;
+  box-shadow: 0 16px 45px #0056b21a;
+}
+.loader-brand svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.loader-orbit {
+  stroke: #00bd8a;
+  stroke-width: 2;
+  stroke-dasharray: 38 188;
+  stroke-linecap: round;
+  transform-origin: 40px 40px;
+  animation: loader-orbit 1.6s linear infinite;
+}
+.loader-bars rect {
+  fill: #0875ed;
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: loader-bars 1.1s ease-in-out infinite alternate;
+}
+.loader-bars rect:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.loader-bars rect:nth-child(3) {
+  fill: #00bd8a;
+  animation-delay: 0.3s;
+}
+.app-loader > strong {
+  font-size: calc(27px + var(--web-font-increase, 0px));
+  letter-spacing: -0.8px;
+  font-weight: 750;
+}
+.app-loader > strong span {
+  color: #00a978;
+}
+.app-loader > p {
+  margin: 11px 0 24px;
+  color: #7587a0;
+  font-size: calc(14px + var(--web-font-increase, 0px));
+}
+.loader-track {
+  width: 150px;
+  height: 4px;
+  overflow: hidden;
+  background: #dce9f5;
+  border-radius: 10px;
+}
+.loader-track span {
+  display: block;
+  width: 45%;
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #0875ed, #00c98b);
+  animation: loader-track 1.25s ease-in-out infinite;
+}
+@keyframes loader-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader-bars {
+  from {
+    transform: scaleY(0.65);
+    opacity: 0.65;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+@keyframes loader-track {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(330%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loader-orbit,
+  .loader-bars rect,
+  .loader-track span {
+    animation: none;
+  }
+  .app-loader {
+    transition: none;
+  }
+  .loader-track span {
+    width: 100%;
+  }
+}
+
+/* BLOCO — Central de notificações individual e contador do sino. */
+#notifications {
+  position: relative;
+  overflow: visible;
+}
+.notification-badge {
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  background: #e44456;
+  color: white;
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  border: 2px solid white;
+}
+.notifications-dialog {
+  width: min(580px, 94vw);
+  max-height: 85vh;
+  padding: 24px;
+  border: 1px solid #e0e8f4;
+  border-radius: 20px;
+  overflow: auto;
+  color: #142347;
+}
+#notifications-read-all {
+  margin: 16px 0;
+}
+.notification-item {
+  display: flex;
+  gap: 12px;
+  text-align: left;
+  width: 100%;
+  padding: 16px 12px;
+  margin: 8px 0;
+  background: #f4f8ff;
+  border: 1px solid #dce7f7;
+  border-radius: 12px;
+  color: #142347;
+  cursor: pointer;
+}
+.notification-item:hover {
+  border-color: #0875ed;
+  background: #edf5ff;
+}
+.notification-item strong {
+  display: block;
+  font-size: calc(14px + var(--web-font-increase, 0px));
+  line-height: 1.4;
+}
+.notification-item small {
+  display: block;
+  margin: 6px 0;
+  color: #617492;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.notification-indicator {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #0875ed;
+  flex: none;
+  margin-top: 6px;
+}
+.notification-item.danger .notification-indicator {
+  background: #dd485b;
+}
+.notification-item.warning .notification-indicator {
+  background: #eda333;
+}
+.notification-item.is-read {
+  background: white;
+}
+.notification-item.is-read .notification-indicator {
+  background: #b8c4d5;
+}
+.notification-state {
+  font-size: calc(11px + var(--web-font-increase, 0px));
+  color: #0875ed;
+}
+
+/* Avisos não lidos percorrem somente o espaço entre o título e o sino. */
+.notification-ticker {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1;
+  min-width: 0;
+  max-width: 650px;
+  margin: 0 20px;
+  padding: 9px 12px;
+  border: 1px solid #dce9f8;
+  border-radius: 10px;
+  background: #f0f7ff;
+  color: #174c86;
+  cursor: pointer;
+  font: inherit;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  text-align: left;
+  overflow: hidden;
+}
+.ticker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00b985;
+  flex: none;
+}
+.ticker-window {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+.ticker-text {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  animation: notification-scroll 18s linear infinite;
+}
+.notification-ticker:hover .ticker-text,
+.notification-ticker:focus .ticker-text {
+  animation-play-state: paused;
+}
+.notification-ticker:focus-visible {
+  outline: 2px solid #0875ed;
+  outline-offset: 3px;
+}
+.topbar > #breadcrumb,
+.topbar > div {
+  flex-shrink: 0;
+}
+@keyframes notification-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@media (max-width: 720px) {
+  .notification-ticker {
+    margin: 0 9px;
+    padding: 7px 8px;
+    font-size: calc(11px + var(--web-font-increase, 0px));
+  }
+  .topbar > div {
+    gap: 7px;
+  }
+  .topbar > #breadcrumb {
+    max-width: 100px;
+  }
+}
+@media (max-width: 420px) {
+  .topbar {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .notification-ticker {
+    margin: 0 6px;
+  }
+  .topbar > #breadcrumb {
+    max-width: 75px;
+    font-size: calc(7px + var(--web-font-increase, 0px));
+  }
+  .topbar .avatar {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker-text {
+    animation: none;
+    padding-left: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+  }
+}
+
+/* BLOCO — Celular e APK: a largura pertence à tela, não ao conteúdo das tabelas.
+   min-width:0 permite que filhos de grid/flex encolham sem alargar a página. */
+.workspace,
+main,
+.panel,
+.grid > *,
+.invest-layout > * {
+  min-width: 0;
+}
+.table-wrap {
+  max-width: 100%;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Navegação horizontal também em celulares deitados e tablets pequenos. */
+@media (max-width: 820px) {
+  .sidebar {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    padding: calc(14px + env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 10px
+      max(14px, env(safe-area-inset-left));
+    overflow: visible;
+  }
+  .brand {
+    padding: 0 0 14px;
+    font-size: calc(16px + var(--web-font-increase, 0px));
+  }
+  .brand svg {
+    width: 38px;
+  }
+  .brand-caption,
+  .sidebar-bottom {
+    display: none;
+  }
+  #navigation {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+  }
+  .nav-link {
+    flex: 0 0 auto;
+    min-height: 44px;
+    margin: 0;
+    padding: 10px 12px;
+    font-size: calc(12px + var(--web-font-increase, 0px));
+    gap: 8px;
+    white-space: nowrap;
+  }
+  .nav-link .icon {
+    width: 19px;
+    height: 19px;
+  }
+  .workspace {
+    width: 100%;
+    margin-left: 0;
+  }
+  .grid,
+  .invest-layout,
+  .investment-banner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .topbar {
+    min-height: 62px;
+    height: auto;
+    padding: 10px 16px;
+  }
+  .topbar > #breadcrumb {
+    font-size: calc(10px + var(--web-font-increase, 0px));
+    letter-spacing: 0.3px;
+    max-width: 125px;
+  }
+  main {
+    width: 100%;
+    padding: 22px 16px;
+  }
+  .page-heading {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .page-heading > div {
+    min-width: 0;
+  }
+  .date-chip.period-filter {
+    display: flex;
+  }
+  .panel {
+    padding: 18px;
+  }
+  .panel-title {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .panel-title h2 {
+    min-width: 0;
+    line-height: 1.5;
+  }
+  .button,
+  .icon-button {
+    min-height: 44px;
+  }
+  .icon-button {
+    min-width: 44px;
+  }
+  input,
+  select,
+  textarea {
+    min-width: 0;
+    max-width: 100%;
+    font-size: calc(16px + var(--web-font-increase, 0px));
+  }
+  .toolbar {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .toolbar > * {
+    max-width: 100%;
+  }
+  .subtitle,
+  .notice,
+  .notification-item,
+  .legend-item {
+    overflow-wrap: anywhere;
+  }
+  .admin-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .invest-stats {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .stats-row {
+    flex-wrap: wrap;
+    gap: 18px 26px;
+  }
+  dialog {
+    width: calc(100% - 24px);
+    max-width: 490px;
+    max-height: calc(100dvh - 24px);
+    margin: auto;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  .notifications-dialog {
+    width: calc(100% - 24px);
+  }
+  .dialog-heading {
+    gap: 12px;
+  }
+  .dialog-heading h2 {
+    font-size: calc(19px + var(--web-font-increase, 0px));
+  }
+  footer {
+    padding: 18px max(16px, env(safe-area-inset-right)) calc(18px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Telas estreitas: cartões, filtros e números ganham espaço próprio. */
+@media (max-width: 520px) {
+  main {
+    padding: 20px 12px;
+  }
+  h1 {
+    font-size: calc(25px + var(--web-font-increase, 0px));
+    line-height: 1.2;
+  }
+  .panel {
+    padding: 16px;
+  }
+  .grid {
+    gap: 16px;
+  }
+  .admin-grid,
+  .metric-grid,
+  .budget-percentages {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .metric {
+    display: block;
+  }
+  .metric .value {
+    margin-top: 8px;
+    overflow-wrap: anywhere;
+  }
+  .donut-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+  .donut {
+    width: 190px;
+    height: 190px;
+  }
+  .donut-inner {
+    width: 140px;
+    height: 140px;
+  }
+  .donut-inner strong {
+    font-size: calc(18px + var(--web-font-increase, 0px));
+  }
+  .legend {
+    width: 100%;
+    gap: 14px;
+  }
+  .legend-item {
+    font-size: calc(12px + var(--web-font-increase, 0px));
+  }
+  .legend-item small {
+    font-size: calc(11px + var(--web-font-increase, 0px));
+  }
+  .period-filter {
+    width: 100%;
+  }
+  .period-filter > div {
+    flex: 1;
+    min-width: 0;
+  }
+  .period-filter input {
+    width: 100%;
+    min-height: 40px;
+  }
+  .topbar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+  .topbar > #breadcrumb {
+    flex: 1;
+    max-width: none;
+    font-size: calc(10px + var(--web-font-increase, 0px));
+  }
+  .topbar > div {
+    margin-left: auto;
+    gap: 6px;
+  }
+  .topbar .avatar {
+    display: none;
+  }
+  .notification-ticker {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+    margin: 0;
+    min-height: 38px;
+  }
+  .credit-card-art {
+    padding: 16px;
+    min-height: 210px;
+  }
+  .credit-card-number {
+    font-size: calc(15px + var(--web-font-increase, 0px));
+    letter-spacing: 1px;
+  }
+  .credit-card-bank {
+    font-size: calc(12px + var(--web-font-increase, 0px));
+    min-width: 0;
+  }
+  .credit-card-top {
+    flex-wrap: wrap;
+  }
+  .credit-card-info {
+    flex-wrap: wrap;
+  }
+  .credit-card-actions {
+    flex-wrap: wrap;
+  }
+  .credit-card-actions .button {
+    flex: 1 1 100px;
+  }
+  .flow-form label {
+    min-width: 0;
+    flex-basis: 100%;
+  }
+  .toolbar .button {
+    flex: 1 1 140px;
+  }
+  .search {
+    width: 100%;
+    flex-basis: 100%;
+  }
+  .dialog-actions {
+    flex-wrap: wrap;
+  }
+  .dialog-actions .button {
+    flex: 1 1 120px;
+  }
+  .empty,
+  .loading {
+    padding: 28px 12px;
+  }
+  .login-options {
+    flex-wrap: wrap;
+    row-gap: 16px;
+  }
+  .login-form-side {
+    padding-inline: 12px;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+  .login-card {
+    padding-inline: 18px;
+  }
+}
+
+/* BLOCO — No aplicativo instalado (APK/PWA), o extrato exibe três colunas.
+   A ocultação é apenas visual: valores, totais e dados sincronizados são preservados. */
+@media (display-mode: standalone), (display-mode: fullscreen) {
+  .bank-statement-table th:nth-child(3),
+  .bank-statement-table th:nth-child(4),
+  .bank-statement-table th:nth-child(5),
+  .bank-statement-table td:nth-child(3),
+  .bank-statement-table td:nth-child(4),
+  .bank-statement-table td:nth-child(5) {
+    display: none;
+  }
+  .bank-statement-table {
+    table-layout: fixed;
+  }
+  .bank-statement-table th,
+  .bank-statement-table td {
+    padding: 14px 6px;
+  }
+  .bank-statement-table th:first-child {
+    width: 78px;
+  }
+  .bank-statement-table th:last-child {
+    width: 100px;
+  }
+  .bank-statement-table td:nth-child(2) {
+    min-width: 0 !important;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+  .bank-statement-table th:last-child,
+  .bank-statement-table td:last-child {
+    text-align: right;
+  }
+}
+
+/* BLOCO — Fatura no APK/PWA: somente data, descrição e valor.
+   No navegador, todas as colunas continuam disponíveis para conferência. */
+@media (display-mode: standalone), (display-mode: fullscreen) {
+  .card-bill-table th:nth-child(n + 3):nth-child(-n + 6),
+  .card-bill-table td:nth-child(n + 3):nth-child(-n + 6) {
+    display: none;
+  }
+  .card-bill-table {
+    table-layout: fixed;
+  }
+  .card-bill-table th,
+  .card-bill-table td {
+    padding: 14px 6px;
+  }
+  .card-bill-table th:first-child {
+    width: 78px;
+  }
+  .card-bill-table th:last-child {
+    width: 100px;
+  }
+  .card-bill-table td:nth-child(2) {
+    min-width: 0 !important;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+  .card-bill-table th:last-child,
+  .card-bill-table td:last-child {
+    text-align: right;
+  }
+}
+
+/* BLOCO — Login no computador: card menor e afastado da ilustração da marca. */
+@media (min-width: 721px) {
+  .login-form-side {
+    padding-left: 3.8vw;
+  }
+  .login-card {
+    width: 90%;
+    max-width: 500px;
+    padding: 24px 26px 28px;
+    border-radius: 28px;
+  }
+  .login-card h1 {
+    font-size: clamp(25px, 2.2vw, 34px);
+  }
+  .login-lock {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 14px;
+  }
+  .login-lock svg {
+    width: 36px;
+    height: 42px;
+  }
+  .login-intro {
+    font-size: calc(18px + var(--web-font-increase, 0px));
+    margin-bottom: 24px;
+  }
+  .login-field {
+    min-height: 58px;
+    margin: 14px 0;
+    padding: 0 16px;
+    border-radius: 14px;
+    gap: 12px;
+  }
+  .login-field input {
+    font-size: calc(18px + var(--web-font-increase, 0px));
+    padding: 12px 0 !important;
+  }
+  .login-field > span svg {
+    width: 23px;
+    height: 25px;
+  }
+  .login-options {
+    font-size: calc(14px + var(--web-font-increase, 0px));
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  .login-submit {
+    height: 58px;
+    font-size: calc(23px + var(--web-font-increase, 0px));
+    border-radius: 14px;
+  }
+  .login-safety {
+    margin-top: 26px;
+    padding-top: 16px;
+    font-size: calc(14px + var(--web-font-increase, 0px));
+  }
+}
+
+/* BLOCO — Planejado, comprometido e saldo por divisão da renda. */
+#budget-legend {
+  flex: 1;
+  min-width: 0;
+}
+.budget-category > div {
+  flex: 1;
+  min-width: 0;
+}
+.budget-comparison {
+  margin: 8px 0 0;
+  font-size: calc(11px + var(--web-font-increase, 0px));
+}
+.budget-comparison > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 5px;
+}
+.budget-comparison dt {
+  color: var(--muted);
+}
+.budget-comparison dd {
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.budget-comparison > div:last-child {
+  padding-top: 5px;
+  border-top: 1px solid var(--line);
+}
+.budget-comparison .budget-negative dt,
+.budget-comparison .budget-negative dd {
+  color: #b42338;
+}
+
+/* Resultado do resumo mensal: destaque sem ocultar saldos negativos. */
+.summary-balance {
+  color: #008463;
+  background: #effaf6;
+  padding-inline: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+.summary-negative {
+  color: #b42338;
+  background: #fff2f3;
+  padding-inline: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+/* Conferência do saldo anterior consolidado por conta bancária. */
+.summary-account-balances {
+  margin: 10px 0 16px;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+}
+.summary-account-balances summary {
+  color: var(--blue);
+  cursor: pointer;
+  padding: 8px 0;
+}
+.summary-account-balances .expense {
+  padding: 10px 0;
+}
+
+/* Ativação de notificações por dispositivo, acessível pelo sino. */
+.push-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 0;
+  border-block: 1px solid var(--line);
+  margin: 16px 0;
+}
+.push-controls .subtitle {
+  flex-basis: 100%;
+}
+
+/* BLOCO — Login do APK: apresentação vertical e formulário conforme a referência.
+   O navegador mantém seu layout; a classe é definida pela detecção Android/TWA. */
+@media (max-width: 900px) {
+  .login-mode.login-apk {
+    background: #062448;
+  }
+  .login-apk .login-screen {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background:
+      radial-gradient(ellipse at 80% 38%, #09604f77, transparent 30%),
+      radial-gradient(ellipse at 10% 47%, #2ca87c44, transparent 24%), #062448;
+  }
+  /* As curvas são decorativas: não ocupam espaço dos campos nem capturam toques. */
+  .login-apk .login-screen::before,
+  .login-apk .login-screen::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+    width: 150px;
+    height: 60%;
+    border: 17px solid #00a4dd;
+    border-left-color: #47df9b;
+    border-radius: 50%;
+    transform: rotate(12deg);
+  }
+  .login-apk .login-screen::before {
+    right: -150px;
+    top: -10%;
+  }
+  .login-apk .login-screen::after {
+    left: -164px;
+    bottom: -20%;
+    transform: rotate(-15deg);
+  }
+  .login-apk .login-background {
+    display: none;
+  }
+  .login-apk .login-hero {
+    min-height: 0;
+    /* Sem a lista de benefícios, aproxima a ilustração do título e reduz a rolagem. */
+    height: clamp(260px, 70vw, 400px);
+    padding: 24px 14px 0;
+    background: transparent;
+    border-radius: 0;
+    max-width: 580px;
+    margin: 0 auto;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .login-apk .login-brand {
+    justify-content: center;
+    gap: 11px;
+  }
+  .login-apk .login-brand > svg {
+    width: 44px;
+    height: 50px;
+  }
+  .login-apk .login-brand > span {
+    font-size: calc(25px + var(--web-font-increase, 0px));
+    letter-spacing: -0.7px;
+  }
+  .login-apk .login-hero h2 {
+    font-size: clamp(23px, 5.7vw, 34px);
+    margin: 18px 0 12px;
+    line-height: 1.18;
+    letter-spacing: -0.6px;
+  }
+  .login-apk .login-benefits {
+    display: grid;
+    gap: 4px;
+    margin: 12px auto 0;
+    width: fit-content;
+  }
+  .login-apk .login-benefits li {
+    font-size: clamp(13px, 3.4vw, 19px);
+    gap: 10px;
+    letter-spacing: -0.3px;
+  }
+  .login-apk .login-benefits li > span {
+    width: 31px;
+    height: 31px;
+    background: #155a91aa;
+  }
+  .login-apk .login-benefits svg {
+    width: 21px;
+    height: 21px;
+  }
+  .login-apk .login-coins {
+    display: block;
+    bottom: -8px;
+    left: 5%;
+    width: 90%;
+    max-height: none;
+    height: 41%;
+  }
+  .login-apk .login-form-side {
+    /* Ocupa o espaço restante e centraliza o conjunto faixa + formulário.
+       A diferença de 18 px compensa a faixa que avança acima do card.
+       Em telas baixas, o conteúdo cresce e permite rolagem sem sobreposição. */
+    flex: 1;
+    padding: 36px 22px 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .login-apk .login-card {
+    position: relative;
+    max-width: 440px;
+    width: 100%;
+    padding: 18px 16px 20px;
+    border-radius: 20px;
+    background: #fbfcff;
+    box-shadow: 0 15px 45px #001b3e55;
+  }
+  .login-apk .login-lock,
+  .login-apk .login-card h1 {
+    display: none;
+  }
+  .login-apk .login-intro {
+    width: max-content;
+    max-width: 100%;
+    position: relative;
+    margin: -36px auto 16px;
+    padding: 7px 10px;
+    border-radius: 14px 14px 0 0;
+    background: #fbfcff;
+    font-size: clamp(13px, 3.6vw, 18px);
+    color: #152b42;
+    letter-spacing: -0.5px;
+  }
+  .login-apk .login-field {
+    min-height: 48px;
+    margin: 10px 0;
+    border-width: 1px;
+    border-color: #d5dce7;
+    border-radius: 13px;
+    padding: 0 12px;
+    gap: 10px;
+  }
+  .login-apk .login-field input {
+    font-size: calc(16px + var(--web-font-increase, 0px));
+    padding: 12px 0 !important;
+  }
+  .login-apk .login-field > span svg {
+    width: 20px;
+    height: 23px;
+  }
+  .login-apk .password-toggle {
+    min-width: 36px;
+    min-height: 44px;
+  }
+  .login-apk .login-options {
+    flex-wrap: nowrap;
+    gap: 5px;
+    margin: 14px 0;
+    font-size: clamp(11px, 3.2vw, 14px);
+  }
+  .login-apk .login-options label {
+    gap: 6px;
+  }
+  .login-apk .login-options input {
+    width: 19px;
+    height: 19px;
+  }
+  .login-apk .login-forgot {
+    min-height: 44px;
+  }
+  .login-apk .login-submit {
+    height: 49px;
+    font-size: calc(22px + var(--web-font-increase, 0px));
+    border-radius: 12px;
+    gap: 12px;
+  }
+  .login-apk .login-submit svg {
+    width: 25px;
+    height: 25px;
+  }
+  .login-apk .login-safety {
+    margin-top: 22px;
+    padding-top: 14px;
+    font-size: calc(11px + var(--web-font-increase, 0px));
+    gap: 7px;
+    color: #334c61;
+  }
+  .login-apk .login-safety svg {
+    width: 20px;
+    height: 23px;
+  }
+}
+
+/* BLOCO — Botões de renda/custo: ícone e texto centralizados na mesma linha. */
+.toolbar:has([data-new='fixed_costs']),
+.toolbar:has([data-new='incomes']) {
+  flex-wrap: wrap;
+}
+.button[data-new='fixed_costs'],
+.button[data-new='incomes'] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  white-space: nowrap;
+  line-height: 1.2;
+  flex-shrink: 0;
+  text-align: center;
+}
+.button[data-new='fixed_costs'] .icon,
+.button[data-new='incomes'] .icon {
+  display: block;
+  flex: 0 0 16px;
+}
+
+/* BLOCO — Gráfico financeiro mensal ajustado à largura disponível. */
+.financial-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 20px 0 12px;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+}
+.financial-chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.financial-chart-legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+.financial-chart-scroll {
+  min-width: 0;
+  max-width: 100%;
+}
+.financial-chart-scroll .financial-chart {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  display: block;
+}
+.financial-chart-scroll .financial-chart text { font-size: 11px; }
+.financial-evolution .table-wrap { overflow: visible; min-width: 0; }
+:root .financial-evolution table { width: 100%; min-width: 0; table-layout: fixed; }
+:root .financial-evolution th,
+:root .financial-evolution td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  padding: 10px 6px;
+  font-size: clamp(10px, 1.1vw, 14px);
+}
+.financial-evolution details {
+  margin-top: 14px;
+}
+.financial-evolution summary {
+  cursor: pointer;
+  color: var(--blue);
+  font-size: calc(13px + var(--web-font-increase, 0px));
+}
+
+/* Espaço entre os cards de resumo/distribuição e o gráfico mensal. */
+.financial-evolution {
+  margin-top: 24px;
+}
+
+/* BLOCO — Mesma largura e espaçamento da arte nos cadastros e na fatura. */
+.credit-card-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 350px));
+}
+.bill-card-preview {
+  width: 350px;
+  max-width: 100%;
+}
+.card-bill-summary-layout {
+  grid-template-columns: minmax(0, 404px) minmax(0, 1fr);
+}
+@media (max-width: 1050px) {
+  .card-bill-summary-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 620px) {
+  .credit-card-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .bill-card-preview {
+    width: 100%;
+  }
+}
+/* BLOCO — Apresentação inicial do APK: leitura confortável, sem autoplay ou dados reais. */
+.onboarding-mode {
+  background: #062448;
+}
+.apk-intro {
+  width: 100%;
+  min-height: 100svh;
+  color: #f4faff;
+  padding: max(20px, env(safe-area-inset-top)) 24px max(26px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  background:
+    radial-gradient(ellipse at 85% 30%, #06746444, transparent 48%),
+    radial-gradient(ellipse at 0 85%, #0766b34d, transparent 50%), #062448;
+}
+.apk-intro-header,
+.apk-intro-stage,
+.apk-intro-controls {
+  width: 100%;
+  max-width: 540px;
+  margin-inline: auto;
+}
+.apk-intro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.apk-intro-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: calc(17px + var(--web-font-increase, 0px));
+  font-weight: 750;
+  line-height: 1.05;
+}
+.apk-intro-brand svg {
+  width: 36px;
+  height: 40px;
+  flex: none;
+}
+.apk-intro-brand strong {
+  display: block;
+  color: #5ae7a6;
+}
+.apk-intro-skip,
+.apk-intro-back {
+  border: 0;
+  color: #c2d9ed;
+  background: transparent;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  padding: 10px 0;
+  min-height: 44px;
+}
+.apk-intro-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.apk-intro-art {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+}
+.apk-intro-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 32svh;
+  min-height: 170px;
+}
+.apk-intro-example {
+  color: #a9c5dc;
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  line-height: 1.5;
+  margin: 3px 0 25px;
+}
+.apk-intro-eyebrow {
+  color: #5ae7a6;
+  letter-spacing: 1.7px;
+  font-size: calc(10px + var(--web-font-increase, 0px));
+  font-weight: 650;
+  margin: 0 0 12px;
+}
+.apk-intro-stage h1 {
+  color: #f4faff;
+  font-size: clamp(28px, 7.5vw, 38px);
+  line-height: 1.14;
+  letter-spacing: -1.1px;
+  margin: 0 auto 16px;
+  max-width: 420px;
+}
+.apk-intro-stage h1:focus {
+  outline: none;
+}
+.apk-intro-description {
+  color: #c0d6e9;
+  font-size: calc(15px + var(--web-font-increase, 0px));
+  line-height: 1.65;
+  margin: 0 auto;
+  max-width: 410px;
+}
+.apk-intro-highlight {
+  color: #71eab6;
+  font-size: calc(13px + var(--web-font-increase, 0px));
+  line-height: 1.5;
+  margin: 20px 0 0;
+}
+.apk-intro-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+.apk-intro-pagination button {
+  width: 36px;
+  height: 44px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+}
+.apk-intro-pagination button span {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 7px;
+  background: #5d7996;
+}
+.apk-intro-pagination button[aria-current] span {
+  background: #5ae7a6;
+  width: 22px;
+}
+.apk-intro-count {
+  color: #a9c5dc;
+  font-size: calc(11px + var(--web-font-increase, 0px));
+  margin-left: 8px;
+}
+.apk-intro-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.apk-intro-back {
+  min-width: 58px;
+}
+.apk-intro-next {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  height: 54px;
+  border: 0;
+  border-radius: 15px;
+  background: linear-gradient(110deg, #20ce98, #6aebb0);
+  color: #052d34;
+  font-size: calc(16px + var(--web-font-increase, 0px));
+  font-weight: 750;
+  box-shadow: 0 8px 28px #00a77d22;
+}
+.apk-intro-next span {
+  font-size: calc(24px + var(--web-font-increase, 0px));
+  font-weight: 400;
+}
+.apk-intro-replay {
+  display: block;
+  margin: 14px auto 0;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: #265a91;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 350px) {
+  .apk-intro {
+    padding-inline: 18px;
+  }
+  .apk-intro-brand {
+    font-size: calc(15px + var(--web-font-increase, 0px));
+  }
+  .apk-intro-skip {
+    font-size: calc(11px + var(--web-font-increase, 0px));
+  }
+}
+@media (max-height: 650px) {
+  .apk-intro {
+    gap: 12px;
+  }
+  .apk-intro-art svg {
+    min-height: 140px;
+    max-height: 25svh;
+  }
+  .apk-intro-example {
+    margin-bottom: 16px;
+  }
+}
+
+/* BLOCO — Abertura da apresentação com a logo oficial e animação curta de crescimento. */
+.apk-logo-splash {
+  min-height: 100svh;
+  padding: max(24px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(ellipse at 50% 42%, #08746744, transparent 55%), #062448;
+  color: #f4faff;
+}
+.apk-logo-splash-content {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+.apk-logo-splash-halo {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: -15px;
+  left: calc(50% - 100px);
+  border: 1px solid #55eab640;
+  border-radius: 50%;
+  box-shadow:
+    0 0 50px #31dca11a,
+    inset 0 0 40px #31dca10d;
+  animation: apk-logo-halo 1.6s ease-out both;
+}
+.apk-logo-splash-mark {
+  position: relative;
+  display: block;
+  width: 164px;
+  height: 164px;
+  margin: 0 auto 30px;
+  border-radius: 32px;
+  box-shadow: 0 12px 45px #00152f44;
+  animation: apk-logo-enter 0.55s ease-out both;
+}
+.apk-logo-splash-bars rect {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: apk-logo-bar 0.6s cubic-bezier(0.2, 0.8, 0.25, 1) both;
+}
+.apk-logo-splash-bars rect:nth-child(1) {
+  animation-delay: 0.15s;
+}
+.apk-logo-splash-bars rect:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.apk-logo-splash-bars rect:nth-child(3) {
+  animation-delay: 0.45s;
+}
+.apk-logo-splash-arrow {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: apk-logo-arrow 0.65s 0.65s ease-out forwards;
+}
+.apk-logo-splash-tip {
+  animation: apk-logo-enter 0.25s 1.1s both;
+}
+.apk-logo-splash-title {
+  color: #f4faff;
+  font-size: calc(31px + var(--web-font-increase, 0px));
+  line-height: 1.08;
+  font-weight: 750;
+  letter-spacing: -1px;
+  margin: 0;
+  animation: apk-logo-caption 0.5s 0.45s both;
+}
+.apk-logo-splash-title strong {
+  display: block;
+  color: #5ae7a6;
+}
+.apk-logo-splash-tagline {
+  margin: 19px 0 0;
+  color: #b7d4e8;
+  font-size: calc(14px + var(--web-font-increase, 0px));
+  line-height: 1.65;
+  animation: apk-logo-caption 0.5s 0.7s both;
+}
+.apk-logo-splash-skip {
+  margin-top: 42px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: #a9c5dc;
+  font-size: calc(12px + var(--web-font-increase, 0px));
+  padding: 10px 20px;
+}
+@keyframes apk-logo-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.87);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes apk-logo-bar {
+  from {
+    opacity: 0;
+    transform: scaleY(0.12);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+@keyframes apk-logo-arrow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes apk-logo-caption {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes apk-logo-halo {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.6;
+    transform: scale(1.18);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .apk-logo-splash *,
+  .apk-logo-splash *::before,
+  .apk-logo-splash *::after {
+    animation: none !important;
+  }
+  .apk-logo-splash-arrow {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* BLOCO — Leitura no site: acrescenta 3 px aos textos sem alterar o APK.
+   A classe é definida pela mesma detecção Android usada pelo login e pelas notificações.
+   No APK, a variável permanece em 0 px, preservando todos os tamanhos anteriores. */
+html.web-readable {
+  --web-font-increase: 3px;
+}
+/* BLOCO — Logo oficial fornecida pelo proprietário: proporção inteira e sem cortes. */
+.optimus-logo {
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.brand > .optimus-logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+}
+.login-brand > .optimus-logo {
+  width: 112px;
+  height: 112px;
+  border-radius: 25px;
+  box-shadow: 0 8px 24px #001a2930;
+}
+.loader-brand > .optimus-logo {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
+  animation: apk-logo-enter 0.6s ease-out both;
+}
+.apk-logo-splash-mark.optimus-logo {
+  width: 192px;
+  height: 192px;
+  border-radius: 36px;
+}
+.apk-intro-brand > .optimus-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+}
+@media (max-width: 720px) {
+  .login-brand > .optimus-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 15px;
+  }
+  .brand > .optimus-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+  }
+}
+
+/* BLOCO — Marca lateral: imagem e nome na primeira linha, assinatura centralizada abaixo.
+   O grid separa a frase da altura do nome para não deslocar a imagem para baixo. */
+@media (min-width: 821px) {
+  .brand {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-name {
+    min-width: 0;
+  }
+  .brand-caption {
+    grid-column: 1 / -1;
+    margin-top: 0;
+    text-align: center;
+    line-height: 1.45;
+    letter-spacing: 1px;
+  }
+}
+/* BLOCO — Login do SITE conforme a referência. O seletor exclui explicitamente o APK.
+   A arte ocupa somente a área esquerda; campos, textos e ações continuam acessíveis. */
+.login-mode:not(.login-apk) {
+  background: #edf2f7;
+}
+.login-mode:not(.login-apk) .login-screen {
+  display: grid;
+  grid-template-columns: 52.1% minmax(0, 1fr);
+  min-height: 100svh;
+  background: #edf2f7;
+  color: #071c30;
+}
+.login-mode:not(.login-apk) .login-background,
+.login-mode:not(.login-apk) .login-benefits {
+  display: none;
+}
+.login-mode:not(.login-apk) .login-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: block;
+  min-width: 0;
+  min-height: max(100svh, 720px);
+  padding: clamp(42px, 4vw, 90px) clamp(32px, 5.8vw, 100px) 0;
+  border-radius: 0;
+  background:
+    radial-gradient(ellipse at 100% 0%, #08705070 0%, #063b3c55 28%, transparent 62%), #041c32;
+  color: #f8fbff;
+}
+.login-mode:not(.login-apk) .login-hero::after {
+  display: none;
+}
+.login-mode:not(.login-apk) .login-hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -20%;
+  right: -38%;
+  width: 74%;
+  height: 72%;
+  border-radius: 0 0 0 80%;
+  transform: rotate(-17deg);
+  background: linear-gradient(135deg, #0a4b46a0, #07966b60);
+  pointer-events: none;
+}
+.login-mode:not(.login-apk) .login-brand {
+  position: relative;
+  z-index: 2;
+  gap: clamp(20px, 2vw, 36px);
+}
+.login-mode:not(.login-apk) .login-brand > .optimus-logo {
+  width: clamp(96px, 9vw, 184px);
+  height: clamp(96px, 9vw, 184px);
+  border-radius: 23%;
+  box-shadow: 0 12px 28px #00000024;
+}
+.login-mode:not(.login-apk) .web-login-brand-copy > span {
+  font-size: clamp(40px, 4.35vw, 112px);
+  line-height: 1.02;
+  letter-spacing: -2px;
+  font-weight: 750;
+}
+.login-mode:not(.login-apk) .login-brand strong {
+  color: #56ce98;
+}
+.login-mode:not(.login-apk) .login-hero h2 {
+  position: relative;
+  z-index: 2;
+  margin: clamp(28px, 3vw, 60px) 0 0;
+  font-size: clamp(28px, 2.9vw, 62px);
+  line-height: 1.16;
+  letter-spacing: -1.2px;
+  font-weight: 400;
+  color: #f9fcff;
+}
+.login-mode:not(.login-apk) .login-hero h2 strong {
+  color: #56ce98;
+  font-weight: 700;
+}
+/* Janela CSS sobre a arte original: exclui a parte do formulário da referência.
+   A imagem original é preservada; marca, frase e formulário são HTML responsivo. */
+.login-mode:not(.login-apk) .web-login-art {
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 1434 / 910;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  container-type: inline-size;
+}
+.login-mode:not(.login-apk) .web-login-art img {
+  filter: url(#dragon-hands-motion);
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 192%;
+  max-width: none;
+  height: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .login-mode:not(.login-apk) .web-login-art img { filter: none; }
+}
+.login-mode:not(.login-apk) .web-chart-rise {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 192%;
+  height: auto;
+  pointer-events: none;
+  overflow: visible;
+}
+.web-chart-rise-line {
+  fill: none;
+  stroke: #7fffd3;
+  stroke-width: 9;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  filter: drop-shadow(0 0 8px #32f5bc);
+  animation: web-chart-rise 2.6s ease-out forwards;
+}
+.web-chart-rise-tip {
+  fill: #8affd8;
+  opacity: 0;
+  animation: web-chart-tip 0.3s 2.3s ease-out forwards;
+}
+@keyframes web-chart-rise { to { stroke-dashoffset: 0; } }
+@keyframes web-chart-tip { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .web-chart-rise-line { animation: none; stroke-dashoffset: 0; }
+  .web-chart-rise-tip { animation: none; opacity: 1; }
+}
+.login-mode:not(.login-apk) .login-form-side {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(28px, 3vw, 72px);
+  background: radial-gradient(ellipse at 50% 45%, #ffffffc0, transparent 74%), #edf2f7;
+}
+.login-mode:not(.login-apk) .login-card {
+  width: 100%;
+  max-width: 640px;
+  padding: clamp(24px, 2vw, 44px);
+  border: 2px solid #ffffff;
+  border-radius: 28px;
+  background: #f7faff55;
+  box-shadow: 0 26px 42px #1d354525;
+  text-align: center;
+}
+.login-mode:not(.login-apk) .login-lock {
+  width: clamp(72px, 6.1vw, 112px);
+  height: clamp(72px, 6.1vw, 112px);
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  color: #0760bb;
+  background: radial-gradient(circle at 50% 40%, #c3ddf9, #c2daf4 64%, #d5e8fb 65%);
+  box-shadow: 0 15px 25px #3576b21a;
+}
+.login-mode:not(.login-apk) .login-lock svg {
+  width: 43%;
+  height: 48%;
+}
+.login-mode:not(.login-apk) .login-card h1 {
+  margin: 0 0 10px;
+  font-size: clamp(28px, 2.5vw, 44px);
+  line-height: 1.18;
+  letter-spacing: -1.1px;
+  font-weight: 750;
+  color: #051b2e;
+}
+.login-mode:not(.login-apk) .login-intro {
+  margin: 0 0 26px;
+  padding: 0;
+  font-size: clamp(16px, 1.35vw, 24px);
+  line-height: 1.5;
+  letter-spacing: -0.45px;
+  color: #697784;
+}
+.login-mode:not(.login-apk) .login-field {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: clamp(56px, 4.45vw, 72px);
+  margin: 15px 0;
+  padding: 0 20px;
+  border: 1.5px solid #b9c4cf;
+  border-radius: 999px;
+  background: #ffffffed;
+}
+.login-mode:not(.login-apk) .login-field:focus-within {
+  border-color: #1266c5;
+  box-shadow: 0 0 0 3px #1266c515;
+}
+.login-mode:not(.login-apk) .login-field > span {
+  color: #657381;
+}
+.login-mode:not(.login-apk) .login-field > span svg {
+  width: 25px;
+  height: 27px;
+}
+.login-mode:not(.login-apk) .login-field input {
+  min-height: 48px;
+  padding: 12px 0 !important;
+  font-size: clamp(17px, 1.5vw, 25px);
+  color: #263d4f;
+}
+.login-mode:not(.login-apk) .login-field input::placeholder {
+  color: #697785;
+}
+.login-mode:not(.login-apk) .password-toggle {
+  min-width: 40px;
+  min-height: 44px;
+  color: #687785;
+}
+.login-mode:not(.login-apk) .password-toggle svg {
+  width: 25px;
+  height: 25px;
+}
+.login-mode:not(.login-apk) .login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin: 18px 0;
+  color: #31495b;
+  font-size: clamp(13px, 1.05vw, 18px);
+}
+.login-mode:not(.login-apk) .login-options label {
+  margin: 0;
+  min-height: 44px;
+  gap: 9px;
+  font: inherit;
+}
+.login-mode:not(.login-apk) .login-options input {
+  width: 21px;
+  height: 21px;
+  accent-color: #0863c2;
+}
+.login-mode:not(.login-apk) .login-forgot {
+  min-height: 44px;
+  color: #667c8e;
+  font: inherit;
+  letter-spacing: -0.3px;
+}
+.login-mode:not(.login-apk) .login-forgot:hover {
+  color: #075bb6;
+}
+.login-mode:not(.login-apk) .login-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(58px, 4.5vw, 74px);
+  gap: 13px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(105deg, #0753ba, #075dce);
+  color: #ffffff;
+  font-size: clamp(21px, 1.9vw, 30px);
+  font-weight: 650;
+  box-shadow: 0 15px 26px #0755bd33;
+}
+.login-mode:not(.login-apk) .login-submit svg {
+  width: 28px;
+  height: 28px;
+}
+.login-mode:not(.login-apk) .login-submit:hover {
+  background: linear-gradient(105deg, #06499f, #0752b6);
+}
+.login-mode:not(.login-apk) .login-safety {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+  padding: 0;
+  border: 0;
+  gap: 10px;
+  color: #657582;
+  font-size: clamp(12px, 1.05vw, 17px);
+  line-height: 1.5;
+  letter-spacing: -0.3px;
+}
+.login-mode:not(.login-apk) .login-safety svg {
+  width: 25px;
+  height: 28px;
+}
+.login-mode:not(.login-apk) #auth-error {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* BLOCO — Tablets: cabeçalho compacto, arte lateral e formulário centralizado abaixo. */
+@media (max-width: 1100px) and (min-width: 901px) {
+  .login-mode:not(.login-apk) .login-screen {
+    grid-template-columns: 50% minmax(0, 1fr);
+  }
+  .login-mode:not(.login-apk) .login-hero {
+    padding-inline: 32px;
+  }
+  .login-mode:not(.login-apk) .login-brand {
+    gap: 16px;
+  }
+  .login-mode:not(.login-apk) .web-login-brand-copy > span {
+    font-size: 40px;
+  }
+  .login-mode:not(.login-apk) .login-brand > .optimus-logo {
+    width: 88px;
+    height: 88px;
+  }
+  .login-mode:not(.login-apk) .login-hero h2 {
+    font-size: 31px;
+  }
+  .login-mode:not(.login-apk) .login-form-side {
+    padding: 24px;
+  }
+  .login-mode:not(.login-apk) .login-card h1 {
+    font-size: 28px;
+  }
+}
+@media (max-width: 900px) {
+  .login-mode:not(.login-apk) .login-screen {
+    display: block;
+  }
+  .login-mode:not(.login-apk) .login-hero {
+    min-height: 0;
+    height: auto;
+    padding: 34px 32px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr);
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+  .login-mode:not(.login-apk) .login-brand {
+    grid-column: 1;
+    gap: 16px;
+  }
+  .login-mode:not(.login-apk) .login-brand > .optimus-logo {
+    width: 76px;
+    height: 76px;
+  }
+  .login-mode:not(.login-apk) .web-login-brand-copy > span {
+    font-size: 37px;
+    letter-spacing: -1.4px;
+  }
+  .login-mode:not(.login-apk) .login-hero h2 {
+    grid-column: 1;
+    margin: 0;
+    font-size: 28px;
+  }
+  .login-mode:not(.login-apk) .web-login-art {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: end;
+    width: calc(100% + 32px);
+    margin-right: -32px;
+    bottom: -34px;
+  }
+  .login-mode:not(.login-apk) .login-form-side {
+    padding: 32px 24px 44px;
+  }
+  .login-mode:not(.login-apk) .login-card {
+    max-width: 560px;
+    padding: 32px;
+    border-radius: 25px;
+    background: #f8fbffb0;
+  }
+  .login-mode:not(.login-apk) .login-card h1 {
+    font-size: 32px;
+  }
+  .login-mode:not(.login-apk) .login-intro {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+  .login-mode:not(.login-apk) .login-lock {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 20px;
+  }
+  .login-mode:not(.login-apk) .login-field {
+    min-height: 60px;
+  }
+  .login-mode:not(.login-apk) .login-field input {
+    font-size: 18px;
+  }
+  .login-mode:not(.login-apk) .login-options {
+    font-size: 14px;
+    margin-block: 14px;
+  }
+  .login-mode:not(.login-apk) .login-submit {
+    height: 60px;
+    font-size: 23px;
+  }
+  .login-mode:not(.login-apk) .login-safety {
+    font-size: 13px;
+    margin-top: 28px;
+  }
+}
+
+/* BLOCO — Celulares: reduz decoração, prioriza o acesso e mantém rolagem com teclado aberto. */
+@media (max-width: 600px) {
+  .login-mode:not(.login-apk) .login-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 26px 20px 28px;
+    text-align: center;
+  }
+  .login-mode:not(.login-apk) .login-brand {
+    gap: 14px;
+    text-align: left;
+  }
+  .login-mode:not(.login-apk) .login-brand > .optimus-logo {
+    width: 62px;
+    height: 62px;
+    border-radius: 15px;
+  }
+  .login-mode:not(.login-apk) .web-login-brand-copy > span {
+    font-size: 32px;
+  }
+  .login-mode:not(.login-apk) .login-hero h2 {
+    margin-top: 21px;
+    font-size: 24px;
+    line-height: 1.18;
+    letter-spacing: -0.7px;
+  }
+  .login-mode:not(.login-apk) .web-login-art {
+    display: none;
+  }
+  .login-mode:not(.login-apk) .login-form-side {
+    padding: 22px 16px 34px;
+  }
+  .login-mode:not(.login-apk) .login-card {
+    padding: 26px 20px 28px;
+    border-radius: 23px;
+  }
+  .login-mode:not(.login-apk) .login-lock {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+  }
+  .login-mode:not(.login-apk) .login-card h1 {
+    font-size: clamp(25px, 6.5vw, 32px);
+    letter-spacing: -0.8px;
+  }
+  .login-mode:not(.login-apk) .login-intro {
+    font-size: 16px;
+    margin-bottom: 22px;
+  }
+  .login-mode:not(.login-apk) .login-field {
+    padding-inline: 16px;
+    gap: 10px;
+    min-height: 56px;
+    margin-block: 14px;
+  }
+  .login-mode:not(.login-apk) .login-field input {
+    font-size: 17px;
+  }
+  .login-mode:not(.login-apk) .login-field > span svg {
+    width: 22px;
+    height: 24px;
+  }
+  .login-mode:not(.login-apk) .login-options {
+    font-size: 13px;
+    gap: 4px 12px;
+    margin-block: 12px;
+  }
+  .login-mode:not(.login-apk) .login-submit {
+    height: 58px;
+    font-size: 22px;
+  }
+  .login-mode:not(.login-apk) .login-safety {
+    font-size: 12px;
+    gap: 8px;
+    margin-top: 26px;
+  }
+  .login-mode:not(.login-apk) .login-safety svg {
+    width: 22px;
+    height: 25px;
+  }
+}
+@media (max-width: 370px) {
+  .login-mode:not(.login-apk) .login-options {
+    gap: 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .login-mode:not(.login-apk) .login-forgot {
+    align-self: flex-end;
+  }
+}
+/* BLOCO — Login web ajustado à altura útil, sem esconder campos nem cortar a página.
+   As medidas usam dvh para acompanhar a área visível em celulares. APK excluído. */
+.login-mode:not(.login-apk) .workspace {
+  min-height: 100dvh;
+}
+.login-mode:not(.login-apk) .login-screen {
+  min-height: 100dvh;
+}
+.login-mode:not(.login-apk) .login-hero {
+  min-height: 0;
+  height: 100dvh;
+}
+.login-mode:not(.login-apk) .login-form-side {
+  padding: clamp(12px, 2.5dvh, 36px);
+}
+.login-mode:not(.login-apk) .login-card {
+  padding: clamp(18px, 2.5dvh, 36px);
+}
+.login-mode:not(.login-apk) .login-lock {
+  width: clamp(48px, 9dvh, 96px);
+  height: clamp(48px, 9dvh, 96px);
+  margin-bottom: 14px;
+}
+.login-mode:not(.login-apk) .login-card h1 {
+  font-size: clamp(24px, 4dvh, 40px);
+  margin-bottom: 8px;
+}
+.login-mode:not(.login-apk) .login-intro {
+  font-size: clamp(14px, 2.2dvh, 21px);
+  margin-bottom: 18px;
+}
+.login-mode:not(.login-apk) .login-field {
+  min-height: clamp(44px, 7.2dvh, 66px);
+  margin-block: clamp(8px, 1.6dvh, 14px);
+}
+.login-mode:not(.login-apk) .login-field input {
+  min-height: 44px;
+  padding-block: 8px !important;
+}
+.login-mode:not(.login-apk) .login-options {
+  margin-block: clamp(6px, 1.8dvh, 16px);
+}
+.login-mode:not(.login-apk) .login-submit {
+  height: clamp(46px, 7.3dvh, 68px);
+}
+.login-mode:not(.login-apk) .login-safety {
+  margin-top: clamp(12px, 3dvh, 28px);
+}
+
+/* Retrato/tablet: cabeçalho proporcional e formulário centralizado no espaço restante. */
+@media (max-width: 900px) {
+  .login-mode:not(.login-apk) .login-screen {
+    display: flex;
+    flex-direction: column;
+  }
+  .login-mode:not(.login-apk) .login-hero {
+    height: min(180px, 20dvh);
+    flex: 0 0 auto;
+    padding: 12px 24px;
+    gap: 8px 20px;
+    align-content: center;
+  }
+  .login-mode:not(.login-apk) .login-brand > .optimus-logo {
+    width: clamp(44px, 7dvh, 64px);
+    height: clamp(44px, 7dvh, 64px);
+  }
+  .login-mode:not(.login-apk) .web-login-brand-copy > span {
+    font-size: clamp(26px, 4dvh, 36px);
+  }
+  .login-mode:not(.login-apk) .login-hero h2 {
+    font-size: clamp(20px, 2.8dvh, 26px);
+    line-height: 1.1;
+  }
+  .login-mode:not(.login-apk) .web-login-art {
+    bottom: -12px;
+    width: calc(100% + 24px);
+    margin-right: -24px;
+    max-height: min(180px, 20dvh);
+  }
+  .login-mode:not(.login-apk) .login-form-side {
+    flex: 1;
+    min-height: 0;
+    padding: 12px 20px;
+  }
+  .login-mode:not(.login-apk) .login-card {
+    max-width: 560px;
+  }
+  .login-mode:not(.login-apk) .login-field {
+    min-height: 48px;
+    margin-block: 10px;
+  }
+  .login-mode:not(.login-apk) .login-field input {
+    font-size: 17px;
+  }
+  .login-mode:not(.login-apk) .login-options {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    margin-block: 8px;
+  }
+  .login-mode:not(.login-apk) .login-forgot {
+    align-self: auto;
+  }
+  .login-mode:not(.login-apk) .login-submit {
+    height: 50px;
+  }
+}
+@media (max-width: 600px) {
+  .login-mode:not(.login-apk) .login-hero {
+    justify-content: center;
+  }
+  .login-mode:not(.login-apk) .login-hero h2 {
+    margin-top: 8px;
+  }
+  .login-mode:not(.login-apk) .login-form-side {
+    padding: 8px 12px;
+  }
+  .login-mode:not(.login-apk) .login-card {
+    padding: 20px 16px;
+  }
+  .login-mode:not(.login-apk) .login-card h1 {
+    font-size: clamp(24px, 6.2vw, 29px);
+  }
+  .login-mode:not(.login-apk) .login-lock {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 12px;
+  }
+  .login-mode:not(.login-apk) .login-intro {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .login-mode:not(.login-apk) .login-safety {
+    font-size: 11px;
+  }
+}
+
+/* Altura reduzida: remove decoração gradualmente para manter todos os controles visíveis. */
+@media (max-height: 720px) {
+  .login-mode:not(.login-apk) .login-lock {
+    display: none;
+  }
+}
+@media (max-height: 650px) and (max-width: 900px) {
+  .login-mode:not(.login-apk) .login-hero {
+    height: auto;
+    padding-block: 10px;
+  }
+  .login-mode:not(.login-apk) .login-hero h2,
+  .login-mode:not(.login-apk) .web-login-art {
+    display: none;
+  }
+}
+@media (max-height: 600px) {
+  .login-mode:not(.login-apk) .login-safety {
+    display: none;
+  }
+}
+@media (max-height: 480px) {
+  .login-mode:not(.login-apk) .login-intro {
+    display: none;
+  }
+  .login-mode:not(.login-apk) .login-card {
+    padding: 12px;
+  }
+  .login-mode:not(.login-apk) .login-card h1 {
+    font-size: 24px;
+  }
+  .login-mode:not(.login-apk) .login-field {
+    min-height: 44px;
+    margin-block: 8px;
+  }
+  .login-mode:not(.login-apk) .login-options {
+    margin-block: 4px;
+  }
+  .login-mode:not(.login-apk) .login-submit {
+    height: 46px;
+  }
+}
+@media (max-height: 450px) and (max-width: 600px) {
+  .login-mode:not(.login-apk) .login-hero {
+    display: none;
+  }
+}
+
+/* Paisagem compacta conserva duas áreas para aproveitar a largura disponível. */
+@media (max-height: 600px) and (min-width: 601px) and (max-width: 900px) {
+  .login-mode:not(.login-apk) .login-screen {
+    display: grid;
+    grid-template-columns: 42% minmax(0, 1fr);
+  }
+  .login-mode:not(.login-apk) .login-hero {
+    height: 100dvh;
+    padding: 24px;
+    display: block;
+  }
+  .login-mode:not(.login-apk) .login-brand {
+    gap: 12px;
+  }
+  .login-mode:not(.login-apk) .login-brand > .optimus-logo {
+    width: 52px;
+    height: 52px;
+  }
+  .login-mode:not(.login-apk) .web-login-brand-copy > span {
+    font-size: 30px;
+  }
+  .login-mode:not(.login-apk) .login-hero h2 {
+    display: block;
+    font-size: 24px;
+    margin-top: 24px;
+  }
+  .login-mode:not(.login-apk) .web-login-art {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-height: none;
+    margin: 0;
+  }
+  .login-mode:not(.login-apk) .login-form-side {
+    padding: 10px 12px;
+  }
+}
+/* Telas baixas também reduzem a arte, mantendo distância da marca e da frase. */
+@media (max-height: 760px) and (min-width: 901px) {
+  .login-mode:not(.login-apk) .login-hero {
+    padding: clamp(20px, 4dvh, 30px) 32px 0;
+    align-content: start;
+  }
+  .login-mode:not(.login-apk) .login-brand > .optimus-logo {
+    width: clamp(64px, 12dvh, 88px);
+    height: clamp(64px, 12dvh, 88px);
+  }
+  .login-mode:not(.login-apk) .web-login-brand-copy > span {
+    font-size: clamp(32px, 7dvh, 48px);
+  }
+  .login-mode:not(.login-apk) .login-hero h2 {
+    margin-top: 20px;
+    font-size: clamp(24px, 5dvh, 32px);
+  }
+  .login-mode:not(.login-apk) .web-login-art {
+    width: min(100%, calc((100dvh - 210px) * 1.576));
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+  }
+}
+@media (max-height: 600px) and (min-width: 601px) and (max-width: 900px) {
+  .login-mode:not(.login-apk) .login-hero {
+    align-content: start;
+  }
+  .login-mode:not(.login-apk) .login-hero h2 {
+    font-size: 22px;
+    margin-top: 20px;
+  }
+  .login-mode:not(.login-apk) .web-login-art {
+    width: min(100%, calc((100dvh - 170px) * 1.576));
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+  }
+}
+@media (max-height: 360px) {
+  .login-mode:not(.login-apk) #auth-error {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+}
+
+/* Visão estratégica: identidade compartilhada entre site e app.
+   As regras responsivas empilham os cards e valores nas telas menores. */
+:root .strategic-cards {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 24px;
+  align-items: stretch;
+}
+:root .strategic-cards > .panel {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid #e1e8f0;
+  border-radius: 22px;
+  box-shadow: 0 8px 28px #15325207;
+}
+:root .strategic-cards .panel-title {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #edf1f6;
+}
+:root .strategic-cards .panel-title h2 {
+  font-size: 19px;
+  line-height: 1.4;
+  letter-spacing: -0.4px;
+  color: #172f4a;
+}
+:root .strategic-cards .panel-title .icon {
+  color: #087d78;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+/* A rosca destaca a renda; os três blocos abaixo permitem comparar os compromissos. */
+:root .income-distribution-panel .donut-layout {
+  flex-direction: column;
+  padding: 0;
+  gap: 26px;
+}
+:root .income-distribution-panel .donut {
+  width: 198px;
+  height: 198px;
+  box-shadow: 0 10px 26px #163b6410;
+}
+:root .income-distribution-panel .donut-inner {
+  width: 162px;
+  height: 162px;
+  box-shadow: inset 0 0 0 1px #edf1f6;
+}
+:root .income-distribution-panel .donut-inner strong {
+  font-size: 25px;
+  font-weight: 750;
+  color: #172f4a;
+}
+:root .income-distribution-panel .donut-inner small {
+  font-size: 13px;
+  color: #687b91;
+}
+:root #budget-legend {
+  width: 100%;
+  gap: 12px;
+}
+:root #budget-legend .budget-category {
+  position: relative;
+  padding: 16px;
+  border: 1px solid #e6ecf3;
+  border-radius: 14px;
+  background: #fbfcfe;
+  gap: 10px;
+}
+:root #budget-legend .dot {
+  margin-top: 7px;
+  width: 8px;
+  height: 8px;
+}
+:root .budget-category-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #223d57;
+}
+:root .budget-percent {
+  border-radius: 6px;
+  padding: 2px 8px;
+  background: #edf2f8;
+  color: #47617b;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+:root #budget-legend .budget-comparison {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+:root #budget-legend .budget-comparison > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+:root #budget-legend .budget-comparison dt {
+  font-size: 12px;
+  color: #62748a;
+}
+:root #budget-legend .budget-comparison dd {
+  font-size: 14px;
+  color: #203b57;
+  overflow-wrap: anywhere;
+}
+:root #budget-legend .budget-comparison > div:last-child dd {
+  color: #087d68;
+}
+:root #budget-legend .budget-negative dd,
+:root #budget-legend .budget-negative dt {
+  color: #b42338 !important;
+}
+/* Receitas e despesas têm leitura tabular; o resultado encerra o resumo em destaque. */
+:root .monthly-summary-panel #monthly-summary > .expense {
+  padding: 16px 0;
+  gap: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a6076;
+}
+:root .monthly-summary-panel .expense > span {
+  min-width: 0;
+}
+:root .monthly-summary-panel .expense strong {
+  font-size: 16px;
+  color: #203b57;
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+:root .monthly-summary-panel #monthly-summary > .summary-opening,
+:root .monthly-summary-panel #monthly-summary > .summary-incoming {
+  padding: 16px;
+  border: 1px solid #e4edf1;
+  border-radius: 12px;
+  background: #f5f9fb;
+  margin-bottom: 10px;
+}
+:root .monthly-summary-panel .summary-incoming strong {
+  color: #087d68;
+}
+:root .monthly-summary-panel .summary-account-balances {
+  margin: 4px 0 12px;
+  border-bottom: 1px solid #edf1f6;
+}
+:root .monthly-summary-panel .summary-account-balances summary {
+  padding: 10px 2px;
+  color: #52708d;
+  font-size: 12px;
+  font-weight: 550;
+}
+:root .monthly-summary-panel .summary-account-balances .expense {
+  padding: 12px 0;
+  font-size: 13px;
+}
+:root .monthly-summary-panel .summary-account-balances strong {
+  font-size: 14px;
+}
+:root .monthly-summary-panel #monthly-summary > .subtitle {
+  margin: 8px 0;
+  padding-left: 12px;
+  border-left: 2px solid #e1e9f1;
+  font-size: 12px;
+  line-height: 1.6;
+}
+:root .monthly-summary-panel #monthly-summary > .summary-total {
+  border: 0;
+  color: #334e68;
+  font-weight: 650;
+  padding-top: 20px;
+}
+:root .monthly-summary-panel #monthly-summary > .summary-balance,
+:root .monthly-summary-panel #monthly-summary > .summary-negative {
+  margin: 8px 0 18px;
+  padding: 22px 18px;
+  border: 1px solid #d4ece4;
+  border-radius: 14px;
+  background: #ecf8f3;
+  color: #126951;
+  font-weight: 650;
+}
+:root .monthly-summary-panel .summary-balance strong {
+  font-size: 24px;
+  color: #087452;
+  letter-spacing: -0.5px;
+}
+:root .monthly-summary-panel #monthly-summary > .summary-negative {
+  background: #fff2f3;
+  border-color: #f4d7dc;
+  color: #b42338;
+}
+:root .monthly-summary-panel .summary-negative strong {
+  color: #b42338;
+  font-size: 24px;
+}
+:root .monthly-summary-panel > .text-link {
+  padding: 10px 0;
+  font-size: 13px;
+  font-weight: 650;
+  color: #17669c;
+}
+/* Cards empilhados quando o espaço não comporta uma comparação lado a lado. */
+@media (max-width: 1150px) {
+  :root .strategic-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  :root .strategic-cards > .panel {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+  :root .strategic-cards .panel-title h2 {
+    font-size: 17px;
+  }
+  :root #budget-legend .budget-category {
+    padding: 12px;
+  }
+  :root #budget-legend .budget-comparison {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  :root #budget-legend .budget-comparison > div {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  :root .monthly-summary-panel .expense strong {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  :root .monthly-summary-panel .summary-balance strong,
+  :root .monthly-summary-panel .summary-negative strong {
+    font-size: 20px;
+  }
+}
+
+/* O texto é um único bloco, alinhado ao ícone e ao centro do botão. */
+.button[data-new='fixed_costs'] .record-create-label,
+.button[data-new='incomes'] .record-create-label {
+  display: block;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Ações das conexões: controles acessíveis e edição dentro do card correspondente. */
+.connection-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.connection-actions .connection-delete {
+  color: #b42338;
+  background: #fff4f5;
+  border-color: #f0cbd2;
+}
+.connection-edit-form {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.connection-edit-form h3 {
+  margin: 0 0 16px;
+}
+.connection-edit-form .connection-edit-error {
+  color: #b42338;
+}
+@media (max-width: 600px) {
+  .connection-actions .button {
+    flex: 1 1 120px;
+  }
+}
+
+/* Login do site: marca e frase na horizontal, sem alterar o login Android. */
+.login-mode:not(.login-apk) .login-hero {
+  container-type: inline-size;
+}
+.login-mode:not(.login-apk) .login-brand {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 3cqw, 24px);
+}
+.login-mode:not(.login-apk) .login-brand > .optimus-logo {
+  width: clamp(40px, 15cqw, 100px);
+  height: clamp(40px, 15cqw, 100px);
+  flex-shrink: 0;
+}
+.login-mode:not(.login-apk) .web-login-brand-copy > span {
+  display: flex;
+  align-items: baseline;
+  gap: 0.22em;
+  white-space: nowrap;
+  font-size: clamp(20px, 8.1cqw, 62px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+.login-mode:not(.login-apk) .login-brand strong {
+  display: inline;
+}
+.login-mode:not(.login-apk) .login-hero h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.28em;
+  white-space: nowrap;
+  font-size: clamp(10px, 3.35cqw, 28px);
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+}
+.login-mode:not(.login-apk) .login-hero h2 br {
+  display: none;
+}
+.login-mode:not(.login-apk) .login-hero h2 strong {
+  display: inline;
+}
+/* No cabeçalho compacto, a escala acompanha o espaço compartilhado com a ilustração. */
+@media (max-width: 900px) {
+  .login-mode:not(.login-apk) .web-login-brand-copy > span {
+    font-size: clamp(18px, 5cqw, 32px);
+  }
+  .login-mode:not(.login-apk) .login-brand > .optimus-logo {
+    width: 40px;
+    height: 40px;
+  }
+  .login-mode:not(.login-apk) .login-hero h2 {
+    font-size: clamp(10px, 2.2cqw, 18px);
+  }
+}
+
+/* Nome e frase compartilham a mesma margem, ao lado do ícone, somente no site. */
+.login-mode:not(.login-apk) .web-login-brand-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  gap: 8px;
+  text-align: left;
+}
+.login-mode:not(.login-apk) .web-login-brand-copy h2 {
+  margin: 0;
+  font-size: clamp(10px, 3.1cqw, 25px);
+}
+@media (max-width: 900px) {
+  .login-mode:not(.login-apk) .web-login-brand-copy {
+    gap: 5px;
+  }
+  .login-mode:not(.login-apk) .web-login-brand-copy h2 {
+    font-size: clamp(9px, 1.9cqw, 16px);
+  }
+}
+.future-card-bars { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(4px, 1.5vw, 18px); margin: 24px 0 12px; }
+.future-card-column { min-width: 0; text-align: center; }
+.future-card-bar-track { height: 160px; display: flex; align-items: flex-end; border-bottom: 1px solid #cbd5e1; }
+.future-card-bar { width: 66%; margin: 0 auto; background: #1670df; border-radius: 6px 6px 0 0; }
+.future-card-unknown { background: repeating-linear-gradient(135deg, #e2e8f0, #e2e8f0 5px, transparent 5px, transparent 10px); }
+.future-card-column strong { display: block; margin-top: 8px; font-size: clamp(9px, 1.3vw, 14px); overflow-wrap: anywhere; }
+.future-card-column span { display: block; font-size: clamp(10px, 1.2vw, 13px); }
+.future-card-column small { display: block; min-height: 18px; font-size: 10px; }

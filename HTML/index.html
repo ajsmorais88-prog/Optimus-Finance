@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!-- BLOCO — Metadados, recursos locais e configuração do aplicativo instalável. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Controle suas contas, cartões e investimentos em um único painel."
+    />
+    <link rel="icon" type="image/png" href="./favicon.png?v=20261118-dragon" />
+    <title>Optimus Finance • Painel</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0b2635" />
+    <link rel="apple-touch-icon" href="/static/icons/app-icon-192.png?v=20261118-dragon" />
+    <!-- Caminhos relativos permitem abrir esta página também pelo arquivo HTML. -->
+    <link rel="stylesheet" href="./style.css?v=20261121-grafico-responsivo" />
+    <link rel="stylesheet" href="./mobile.css?v=20261118-web-brand-alignment" />
+    <script src="./banks.js" defer></script>
+    <script src="./apk-intro.js?v=20261118-web-brand-alignment"></script>
+    <script src="./app.js?v=20261121-grafico-sem-rolagem" defer></script>
+  </head>
+  <body>
+    <!-- Carregamento aparece antes do JavaScript e termina assim que os dados estiverem prontos. -->
+    <div
+      id="app-loader"
+      class="app-loader"
+      role="status"
+      aria-live="polite"
+      aria-label="Carregando o Optimus Finance"
+    >
+      <div class="loader-brand" aria-hidden="true">
+        <img
+          class="optimus-logo loader-logo"
+          src="./favicon.png?v=20261118-dragon"
+          width="80"
+          height="80"
+          alt=""
+        />
+      </div>
+      <strong>Optimus <span>Finance</span></strong>
+      <p>Preparando seu painel…</p>
+      <div class="loader-track" aria-hidden="true"><span></span></div>
+    </div>
+    <noscript
+      ><style>
+        #app-loader {
+          display: none;
+        }
+      </style>
+      <p>Ative o JavaScript para acessar o painel.</p></noscript
+    >
+    <!-- BLOCO 1 — Navegação persistente entre as cinco telas. -->
+    <!-- BLOCO — Navegação entre as áreas financeiras do usuário. -->
+    <aside class="sidebar">
+      <a class="brand" href="#overview" aria-label="Optimus Finance, início">
+        <img
+          class="optimus-logo"
+          src="./favicon.png?v=20261118-dragon"
+          width="54"
+          height="54"
+          alt=""
+        />
+        <span class="brand-name">Optimus<br />Finance</span>
+        <span class="brand-caption">SEU FUTURO, EM EQUILÍBRIO</span>
+      </a>
+      <nav id="navigation" aria-label="Menu principal"></nav>
+      <div class="sidebar-bottom">
+        <span class="security-dot"></span> <span id="environment-label">Ambiente online</span>
+        <small>Seus números. Suas decisões.</small>
+      </div>
+    </aside>
+
+    <!-- BLOCO 2 — Cabeçalho e conteúdo gerados a partir dos dados da API. -->
+    <div class="workspace">
+      <!-- BLOCO — Contexto da página, notificações e encerramento da sessão. -->
+      <header class="topbar">
+        <span id="breadcrumb">PAINEL FINANCEIRO</span
+        ><button
+          type="button"
+          id="notification-ticker"
+          class="notification-ticker"
+          hidden
+          aria-label="Notificação não lida"
+        >
+          <span class="ticker-dot" aria-hidden="true"></span><span class="ticker-window"></span>
+        </button>
+        <div>
+          <button
+            class="icon-button"
+            id="notifications"
+            aria-label="Notificações"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-controls="notifications-dialog"
+          ></button
+          ><span class="avatar">U</span
+          ><button
+            class="profile"
+            id="profile"
+            aria-label="Configurações do perfil"
+            title="Configurações do perfil"
+            hidden
+          ></button
+          ><button class="button secondary" id="logout" type="button" hidden>Sair</button>
+        </div>
+      </header>
+      <!-- BLOCO — Área preenchida pelas telas e consultas do JavaScript. -->
+      <main id="content" tabindex="-1"></main>
+      <footer>
+        Optimus Finance <span>Clareza para planejar. Liberdade para conquistar.</span>
+      </footer>
+    </div>
+
+    <!-- BLOCO — Navegação exclusiva do APK: atalhos fixos e menu completo acessível. -->
+    <nav
+      id="mobile-navigation"
+      class="mobile-bottom-nav"
+      aria-label="Navegação do aplicativo"
+      hidden
+    ></nav>
+    <dialog id="mobile-menu" class="mobile-menu" aria-labelledby="mobile-menu-title">
+      <div class="mobile-menu-handle" aria-hidden="true"></div>
+      <div class="dialog-heading">
+        <div>
+          <p class="mobile-menu-brand">OPTIMUS FINANCE</p>
+          <h2 id="mobile-menu-title">Seu espaço financeiro</h2>
+        </div>
+        <button type="button" class="icon-button" data-close-mobile-menu aria-label="Fechar menu">
+          ×
+        </button>
+      </div>
+      <nav id="mobile-menu-links" aria-label="Todas as páginas"></nav>
+      <button type="button" class="button secondary mobile-logout" data-mobile-logout>
+        Sair da conta
+      </button>
+    </dialog>
+
+    <!-- BLOCO 3 — Um formulário acessível atende cadastro e edição. -->
+    <dialog id="editor">
+      <form id="record-form">
+        <div class="dialog-heading">
+          <h2 id="dialog-title">Novo registro</h2>
+          <button type="button" class="icon-button" id="close-dialog" aria-label="Fechar">×</button>
+        </div>
+        <div id="fields"></div>
+        <p id="form-error" role="alert"></p>
+        <div class="dialog-actions">
+          <button type="button" class="button secondary" id="cancel-dialog">Cancelar</button
+          ><button class="button" type="submit">Salvar alterações</button>
+        </div>
+      </form>
+    </dialog>
+    <!-- Central individual de notificações, sem envio para serviços externos. -->
+    <dialog id="notifications-dialog" class="notifications-dialog">
+      <div class="dialog-heading">
+        <h2>Notificações</h2>
+        <button
+          type="button"
+          class="icon-button"
+          data-close-notifications
+          aria-label="Fechar notificações"
+        >
+          ×
+        </button>
+      </div>
+      <p class="subtitle">
+        Vencimentos: até 2 dias antes. Orçamento: alerta a partir de 90%. Novos lançamentos aparecem
+        após a sincronização.
+      </p>
+      <div class="push-controls">
+        <button type="button" class="button" id="push-enable">Ativar notificações no celular</button
+        ><button type="button" class="button secondary" id="push-disable" hidden>
+          Desativar neste dispositivo
+        </button>
+        <button type="button" class="button secondary" id="push-test" hidden>
+          Testar notificação
+        </button>
+        <p id="push-status" class="subtitle" role="status">
+          Receba avisos de novas transações bancárias e de cartões, mesmo com o aplicativo fechado.
+          No APK Android, receba também lembretes de custos fixos próximos do vencimento ou
+          vencidos.
+        </p>
+      </div>
+      <button type="button" class="button secondary" id="notifications-read-all">
+        Marcar todas como lidas
+      </button>
+      <div id="notifications-list" aria-live="polite"></div>
+    </dialog>
+    <div id="toast" role="status"></div>
+  </body>
+</html>

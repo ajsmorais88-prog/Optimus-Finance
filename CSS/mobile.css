@@ -1,0 +1,1386 @@
+/* OPTIMUS FINANCE — Interface do aplicativo Android.
+   Todas as regras dependem de .apk-app: o site mantém seu layout e fontes atuais. */
+html.apk-app {
+  --blue: #087f75;
+  --green: #00a782;
+  --ink: #142f40;
+  --muted: #657b8b;
+  --line: #e3ebef;
+  --background: #f3f6f8;
+  background: var(--background);
+}
+.apk-app body:not(.login-mode):not(.onboarding-mode) {
+  background: var(--background);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.apk-app body:not(.login-mode):not(.onboarding-mode) > .sidebar {
+  display: none;
+}
+.apk-app body:not(.login-mode):not(.onboarding-mode) .workspace {
+  margin: 0;
+  width: 100%;
+  min-height: 100svh;
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+}
+
+/* BLOCO — Cabeçalho enxuto e navegação que permanece ao alcance do polegar. */
+.apk-app .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  min-height: 76px;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) 20px 12px;
+  background: #f9fcfdf5;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid #e2eaee;
+}
+.apk-app .topbar > #breadcrumb {
+  flex: 1;
+  max-width: none;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: 0;
+  color: #496171;
+}
+.apk-app #breadcrumb::before {
+  content: 'OPTIMUS FINANCE';
+  display: block;
+  color: #123847;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+  margin-bottom: 2px;
+}
+.apk-app .topbar > div {
+  margin-left: auto;
+}
+.apk-app .topbar #logout,
+.apk-app .topbar .avatar {
+  display: none;
+}
+.apk-app .topbar .icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+  background: #e9f3f1;
+  color: #0b726a;
+}
+.apk-app .notification-ticker {
+  order: 3;
+  flex-basis: 100%;
+  margin: 0;
+  min-height: 36px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 12px;
+}
+.apk-app .mobile-bottom-nav {
+  position: fixed;
+  z-index: 20;
+  inset: auto 0 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+  padding: 8px max(10px, env(safe-area-inset-right, 0px))
+    calc(8px + env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-left, 0px));
+  background: #fffffff5;
+  backdrop-filter: blur(18px);
+  border-top: 1px solid #e1e9ed;
+  box-shadow: 0 -8px 32px #16303c08;
+}
+.apk-app .login-mode .mobile-bottom-nav,
+.apk-app .onboarding-mode .mobile-bottom-nav {
+  display: none;
+}
+.mobile-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  min-height: 58px;
+  min-width: 0;
+  padding: 6px 2px;
+  border: 0;
+  border-radius: 16px;
+  color: #728491;
+  background: transparent;
+  font-size: 11px;
+  line-height: 1.1;
+  font-weight: 600;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-tab .icon {
+  width: 23px;
+  height: 23px;
+}
+.mobile-tab.active {
+  background: #e6f4ef;
+  color: #07776b;
+  font-weight: 750;
+}
+
+/* BLOCO — Folha de navegação completa, com foco controlado pelo dialog nativo. */
+.apk-app dialog.mobile-menu {
+  inset: auto 0 0;
+  width: 100%;
+  max-width: 600px;
+  max-height: min(88dvh, 900px);
+  margin: auto auto 0;
+  padding: 8px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  border: 0;
+  border-radius: 28px 28px 0 0;
+  background: #fff;
+}
+.mobile-menu-handle {
+  width: 40px;
+  height: 4px;
+  margin: 4px auto 20px;
+  border-radius: 10px;
+  background: #d2dfe4;
+}
+.mobile-menu-brand {
+  margin: 0 0 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #087f75;
+}
+.apk-app .mobile-menu h2 {
+  font-size: 21px;
+  letter-spacing: -0.5px;
+}
+#mobile-menu-links {
+  display: grid;
+  gap: 6px;
+}
+.mobile-menu-link {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 13px;
+  min-height: 52px;
+  padding: 12px;
+  border-radius: 14px;
+  color: #354f5c;
+  font-size: 14px;
+}
+.mobile-menu-link.active {
+  color: #087f75;
+  background: #edf7f3;
+  font-weight: 700;
+}
+.mobile-menu-link > span:last-child {
+  color: #8ba0a9;
+  font-size: 22px;
+}
+.mobile-logout {
+  width: 100%;
+  margin-top: 18px;
+}
+
+/* BLOCO — Cards, números e filtros com uma hierarquia comum em todas as páginas. */
+.apk-app main {
+  width: 100%;
+  max-width: 820px;
+  padding: 24px 16px;
+}
+.apk-app .page-heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+.apk-app .page-heading > div {
+  min-width: 0;
+}
+.apk-app .eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  margin-bottom: 8px;
+  color: #087f75;
+}
+.apk-app main h1 {
+  font-size: clamp(25px, 6.4vw, 32px);
+  line-height: 1.17;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+.apk-app main .subtitle {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #6a7d8b;
+}
+.apk-app .grid,
+.apk-app .invest-layout,
+.apk-app .investment-banner,
+.apk-app .card-bill-summary-layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+.apk-app .panel {
+  border: 1px solid #e2e9ed;
+  border-radius: 22px;
+  padding: 20px 18px;
+  box-shadow: 0 5px 20px #14304405;
+}
+.apk-app .panel-title {
+  margin-bottom: 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.apk-app .panel-title h2 {
+  font-size: 17px;
+  line-height: 1.35;
+  letter-spacing: -0.4px;
+  gap: 10px;
+}
+.apk-app .panel-title h2 > .icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: #087f75;
+}
+.apk-app .label {
+  font-size: 12px;
+  line-height: 1.5;
+}
+.apk-app .value {
+  font-size: clamp(19px, 4.9vw, 25px);
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.6px;
+  overflow-wrap: anywhere;
+}
+.apk-app .period-filter {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 15px;
+  border-color: #e0e9ed;
+  box-shadow: 0 2px 8px #122f4003;
+  align-items: center;
+}
+.apk-app .period-filter > div {
+  flex: 1;
+  min-width: 0;
+}
+.apk-app .period-filter label {
+  margin: 0;
+  font-size: 10px;
+  color: #7a8f99;
+}
+.apk-app .period-filter input {
+  min-height: 32px;
+  padding: 2px 0;
+  font-size: 14px;
+  color: #224958;
+}
+.apk-app .period-reset {
+  min-height: 40px;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 11px;
+  background: #eaf5f1;
+  color: #087f75;
+}
+.apk-app .button {
+  min-height: 46px;
+  border-radius: 13px;
+  padding: 11px 15px;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 650;
+  letter-spacing: 0;
+  white-space: normal;
+  box-shadow: none;
+}
+.apk-app .button.secondary {
+  background: #f0f7f5;
+  border-color: #d8e9e3;
+  color: #08776c;
+}
+.apk-app .toolbar {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.apk-app .toolbar > .button {
+  flex: 1 1 130px;
+}
+.apk-app .toolbar .search {
+  flex: 1 0 100%;
+  width: 100%;
+}
+.apk-app .search,
+.apk-app input:not([type='checkbox']),
+.apk-app select,
+.apk-app textarea {
+  min-height: 48px;
+  border-radius: 13px;
+  border-color: #dce7eb;
+  background: #fbfcfd;
+  font-size: 16px;
+  padding: 12px;
+  max-width: 100%;
+}
+.apk-app .period-filter input {
+  min-height: 32px;
+  padding: 2px 0;
+  background: transparent;
+  font-size: 14px;
+  border: 0;
+}
+.apk-app label {
+  font-size: 13px;
+}
+.apk-app .pill {
+  border-radius: 8px;
+  font-size: 11px;
+  padding: 5px 9px;
+  line-height: 1.4;
+  white-space: normal;
+}
+.apk-app .expense {
+  font-size: 13px;
+  padding: 16px 0;
+  align-items: flex-start;
+  gap: 16px;
+}
+.apk-app .expense > span {
+  min-width: 0;
+}
+.apk-app .expense strong {
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.apk-app .summary-balance {
+  margin: 12px 0 0;
+  padding: 18px;
+  border: 0;
+  border-radius: 16px;
+  background: #0b3441;
+  color: white;
+}
+.apk-app .summary-negative {
+  color: #c43d4e;
+  background: #fff1f2;
+}
+.apk-app .metric-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.apk-app .metric {
+  padding: 16px 13px;
+  border-radius: 17px;
+}
+.apk-app .metric .label {
+  font-size: 11px;
+  margin-bottom: 9px;
+}
+.apk-app .metric small {
+  font-size: 10px;
+  line-height: 1.4;
+  display: block;
+  margin-top: 8px;
+  color: #798b96;
+}
+.apk-app .metric .value {
+  font-size: clamp(17px, 4.5vw, 23px);
+}
+.apk-app .stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.apk-app .invest-stats {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+
+/* BLOCO — Orçamento mensal: detalhes em três colunas sem perder a comparação. */
+.apk-app .donut-layout {
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.apk-app .donut {
+  width: 184px;
+  height: 184px;
+}
+.apk-app .donut-inner {
+  width: 138px;
+  height: 138px;
+}
+.apk-app .donut-inner strong {
+  font-size: 21px;
+}
+.apk-app .donut-inner small {
+  font-size: 11px;
+}
+.apk-app .legend {
+  width: 100%;
+  gap: 10px;
+}
+.apk-app .budget-category {
+  padding: 14px 12px;
+  border-radius: 15px;
+  background: #f6f9fa;
+  gap: 8px;
+  font-size: 13px;
+}
+.apk-app .budget-comparison {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 11px;
+}
+.apk-app .budget-comparison > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  margin: 0;
+}
+.apk-app .budget-comparison dt {
+  font-size: 10px;
+}
+.apk-app .budget-comparison dd {
+  font-size: 11px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.apk-app .financial-evolution {
+  margin-top: 18px;
+}
+.apk-app .financial-chart-legend {
+  font-size: 12px;
+  gap: 12px;
+}
+.apk-app .chart text {
+  font-size: 12px;
+}
+.apk-app .investment-banner {
+  margin-top: 18px;
+}
+.apk-app .investment-donut-layout {
+  flex-direction: column;
+  gap: 20px;
+}
+.apk-app .investment-legend {
+  width: 100%;
+  min-width: 0;
+}
+
+/* BLOCO — Cadastros como cartões: duas colunas para detalhes e ações em linha própria. */
+.apk-app .table-wrap {
+  max-width: 100%;
+  border-radius: 15px;
+}
+.apk-app .mobile-record-table {
+  display: block;
+  width: 100%;
+  white-space: normal;
+}
+.apk-app .mobile-record-table thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.apk-app .mobile-record-table tbody {
+  display: grid;
+  gap: 12px;
+}
+.apk-app .mobile-record-table tbody tr {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px 16px;
+  padding: 16px;
+  border: 1px solid #e0e9ed;
+  border-radius: 17px;
+  background: #fff;
+}
+.apk-app .mobile-record-table td {
+  display: block;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  font-variant-numeric: tabular-nums;
+}
+.apk-app .mobile-record-table td::before {
+  content: attr(data-label);
+  display: block;
+  margin-bottom: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #728793;
+}
+.apk-app .mobile-record-table td:first-child {
+  grid-column: 1 / -1;
+  font-size: 15px;
+  font-weight: 650;
+}
+.apk-app .mobile-record-table td:last-child {
+  grid-column: 1 / -1;
+}
+.apk-app .mobile-record-table .actions {
+  justify-content: flex-end;
+  gap: 10px;
+}
+.apk-app .actions button {
+  width: 44px;
+  height: 44px;
+  background: #f0f6f7;
+  border: 1px solid #e3edef;
+  border-radius: 12px;
+  color: #087f75;
+}
+.apk-app .institution {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.apk-app .payment-proof {
+  min-width: 0;
+  font-size: 11px;
+}
+.apk-app .credit-card-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+.apk-app .credit-card-item {
+  max-width: 100%;
+  padding: 12px;
+  border-radius: 22px;
+  background: #fff;
+}
+.apk-app .credit-card-art {
+  border-radius: 17px;
+  padding: 18px;
+  min-height: 200px;
+}
+.apk-app .credit-card-number {
+  font-size: clamp(13px, 3.5vw, 17px);
+  letter-spacing: 1.2px;
+}
+.apk-app .credit-card-bank {
+  font-size: 13px;
+}
+.apk-app .credit-card-actions {
+  gap: 8px;
+}
+.apk-app .credit-card-info strong {
+  font-size: 15px;
+}
+.apk-app .bill-card-preview {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* BLOCO — Extratos do APK: somente Data, Descrição e Valor, sem rolagem lateral. */
+.apk-app .bank-statement-table th:nth-child(n + 3):not(:last-child),
+.apk-app .bank-statement-table td:nth-child(n + 3):not(:last-child),
+.apk-app .card-bill-table th:nth-child(n + 3):not(:last-child),
+.apk-app .card-bill-table td:nth-child(n + 3):not(:last-child) {
+  display: none;
+}
+.apk-app .bank-statement-table,
+.apk-app .card-bill-table {
+  width: 100%;
+  table-layout: fixed;
+  white-space: normal;
+}
+.apk-app :is(.bank-statement-table, .card-bill-table) :is(th, td) {
+  padding: 15px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  vertical-align: top;
+}
+.apk-app :is(.bank-statement-table, .card-bill-table) th {
+  font-size: 10px;
+  background: #f0f5f7;
+  color: #69828f;
+}
+.apk-app :is(.bank-statement-table, .card-bill-table) :is(th, td):first-child {
+  width: 72px;
+}
+.apk-app :is(.bank-statement-table, .card-bill-table) :is(th, td):last-child {
+  width: 86px;
+  text-align: right;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+.apk-app :is(.bank-statement-table, .card-bill-table) td:nth-child(2) {
+  min-width: 0 !important;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* BLOCO — Administração, integrações e formulários com áreas de toque generosas. */
+.apk-app .admin-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.apk-app .admin-card {
+  padding: 20px 13px;
+  text-align: left;
+}
+.apk-app .admin-card > .icon {
+  width: 27px;
+  height: 27px;
+  color: #087f75;
+  margin: 0 0 16px;
+}
+.apk-app .admin-card h2 {
+  font-size: 15px;
+}
+.apk-app .admin-card p {
+  font-size: 12px;
+  min-height: 56px;
+}
+.apk-app .admin-card .button {
+  width: 100%;
+  padding-inline: 8px;
+}
+.apk-app .exchange-choices {
+  gap: 8px;
+}
+.apk-app .exchange-choice {
+  border-radius: 15px;
+  padding: 14px 7px;
+  flex-direction: column;
+  font-size: 12px;
+}
+.apk-app .exchange-choice.active {
+  background: #edf8f3;
+  border-color: #14927e;
+  box-shadow: none;
+}
+.apk-app .flow-form {
+  gap: 12px;
+}
+.apk-app .flow-form label {
+  min-width: 0;
+  flex-basis: 100%;
+}
+.apk-app dialog:not(.mobile-menu) {
+  width: calc(100% - 24px);
+  max-width: 520px;
+  max-height: calc(100dvh - 24px);
+  border: 0;
+  border-radius: 24px;
+  padding: 22px 20px;
+  overflow-y: auto;
+}
+.apk-app .dialog-heading h2 {
+  font-size: 21px;
+  line-height: 1.3;
+}
+.apk-app .dialog-actions {
+  position: sticky;
+  bottom: -22px;
+  background: white;
+  padding: 16px 0 4px;
+  gap: 10px;
+}
+.apk-app .dialog-actions .button {
+  flex: 1;
+}
+.apk-app .push-controls {
+  gap: 10px;
+}
+.apk-app .push-controls .button {
+  width: 100%;
+}
+.apk-app .notification-item {
+  padding: 16px;
+  border-radius: 15px;
+  margin: 10px 0;
+}
+.apk-app #toast {
+  bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  max-width: calc(100% - 32px);
+  border-radius: 14px;
+  font-size: 13px;
+}
+.apk-app footer {
+  padding: 10px 20px 18px;
+  color: #8a9ba5;
+  font-size: 10px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* BLOCO — Login preserva a abertura animada e o card centralizado com a nova marca. */
+.apk-app .login-mode.login-apk {
+  background: #0b2635;
+}
+.apk-app .login-apk .login-screen {
+  background: radial-gradient(ellipse at 85% 22%, #09674f55, transparent 48%), #0b2635;
+}
+.apk-app .login-apk .login-brand > span {
+  font-size: 28px;
+  letter-spacing: -1px;
+}
+.apk-app .login-apk .login-brand strong {
+  color: #55e3a6;
+}
+.apk-app .login-apk .login-hero h2 {
+  font-size: clamp(22px, 5.7vw, 30px);
+}
+.apk-app .login-apk .login-card {
+  border-radius: 25px;
+  padding: 22px 18px;
+  box-shadow: 0 18px 60px #001a2950;
+}
+.apk-app .login-apk .login-intro {
+  font-size: 14px;
+  border-radius: 16px 16px 0 0;
+}
+.apk-app .login-apk .login-field {
+  background: white;
+  border-radius: 14px;
+  min-height: 52px;
+}
+.apk-app .login-apk .login-field input {
+  background: transparent;
+}
+.apk-app .login-apk .login-submit {
+  background: #087f75;
+  border: 0;
+  border-radius: 14px;
+  font-size: 20px;
+}
+.apk-app .login-apk .login-options {
+  font-size: 12px;
+}
+.apk-app .login-apk .login-safety {
+  font-size: 11px;
+}
+
+/* Paisagem e teclado aberto: prioriza campos visíveis e rolagem natural. */
+@media (max-height: 550px) and (orientation: landscape) {
+  .apk-app .topbar {
+    position: relative;
+  }
+  .apk-app .login-apk .login-hero {
+    height: 245px;
+  }
+}
+@media (max-width: 350px) {
+  .apk-app main {
+    padding-inline: 12px;
+  }
+  .apk-app .panel {
+    padding: 18px 14px;
+  }
+  .apk-app .metric-grid {
+    gap: 8px;
+  }
+  .apk-app .metric {
+    padding: 14px 10px;
+  }
+  .apk-app .admin-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .apk-app .admin-card p {
+    min-height: 0;
+  }
+  .apk-app .budget-comparison {
+    gap: 4px;
+  }
+  .apk-app .budget-comparison dd {
+    font-size: 10px;
+  }
+}
+
+/* Mantém a separação entre seções independentes e alinha os três indicadores do orçamento. */
+.apk-app main > .panel + .panel {
+  margin-top: 18px;
+}
+.apk-app .budget-comparison > div:last-child {
+  border: 0;
+  padding-top: 0;
+}
+
+/* Login e abertura nunca exibem o cabeçalho do painel. */
+.apk-app .login-mode .topbar,
+.apk-app .onboarding-mode .topbar {
+  display: none;
+}
+/* BLOCO — A nova logo tem mais detalhe: espaço próprio no login e no cabeçalho. */
+.apk-app .login-apk .login-brand > .optimus-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 17px;
+}
+.apk-app .login-apk .login-hero {
+  height: clamp(300px, 76vw, 420px);
+}
+.apk-app #breadcrumb::before {
+  background: url('/static/icons/app-icon-192.png?v=20261118-dragon') left center / 23px 23px
+    no-repeat;
+  padding-left: 29px;
+  min-height: 23px;
+  display: flex;
+  align-items: center;
+}
+@media (max-height: 550px) and (orientation: landscape) {
+  .apk-app .login-apk .login-hero {
+    height: 285px;
+  }
+}
+/* BLOCO — Login do APP conforme a referência móvel. O site não recebe estas regras. */
+.apk-app .login-mode.login-apk {
+  background: #071e32;
+}
+.apk-app .login-apk .login-screen {
+  --apk-hero-size: clamp(270px, 38dvh, 380px);
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: #071e32;
+  isolation: isolate;
+}
+.apk-app .login-apk .login-screen::before {
+  z-index: 0;
+  top: -12%;
+  right: -36%;
+  left: auto;
+  width: 75%;
+  height: 40%;
+  border: 0;
+  border-radius: 0 0 0 78%;
+  transform: rotate(-18deg);
+  background: linear-gradient(140deg, #104846aa, #087b5866);
+}
+.apk-app .login-apk .login-screen::after {
+  display: none;
+}
+.apk-app .login-apk .login-hero {
+  position: relative;
+  z-index: 1;
+  height: var(--apk-hero-size);
+  min-height: 0;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 22px 18px 0;
+  flex: 0 0 auto;
+  background: transparent;
+  text-align: center;
+}
+.apk-app .login-apk .login-brand {
+  position: relative;
+  z-index: 2;
+  justify-content: center;
+  gap: 14px;
+  text-align: left;
+}
+.apk-app .login-apk .login-brand > .optimus-logo {
+  width: 62px;
+  height: 62px;
+  border-radius: 15px;
+}
+.apk-app .login-apk .login-brand > span {
+  font-size: clamp(28px, 7.2vw, 34px);
+  line-height: 1.02;
+  letter-spacing: -1px;
+}
+.apk-app .login-apk .login-brand strong {
+  color: #5bcd9c;
+}
+.apk-app .login-apk .login-hero h2 {
+  position: relative;
+  z-index: 2;
+  margin: 18px 0 0;
+  color: #f8fcff;
+  font-size: clamp(22px, 5.9vw, 28px);
+  line-height: 1.18;
+  font-weight: 400;
+  letter-spacing: -0.7px;
+}
+.apk-app .login-apk .login-hero h2 strong {
+  color: #5bcd9c;
+  font-weight: 700;
+}
+/* A imagem original fica inteira no arquivo. A janela exclui o formulário desenhado na referência. */
+.apk-app .login-apk .apk-login-art {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: min(100%, calc((var(--apk-hero-size) - 186px) * 2.518));
+  max-width: 560px;
+  aspect-ratio: 1536 / 610;
+  margin: 0 auto;
+  overflow: hidden;
+  pointer-events: none;
+}
+.apk-app .login-apk .apk-login-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  transform: translateY(-26.89%);
+}
+.apk-app .login-apk .login-form-side {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  padding: 0 18px max(18px, env(safe-area-inset-bottom, 0px));
+  margin-top: -8px;
+}
+.apk-app .login-apk .login-card {
+  width: 100%;
+  max-width: 460px;
+  padding: 20px 18px;
+  border: 1px solid #ffffff;
+  border-radius: 23px;
+  background: #f3f6fffa;
+  box-shadow: 0 18px 45px #00132155;
+  text-align: center;
+}
+.apk-app .login-apk .login-lock {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #c6ddfa, #e0ebfb);
+  color: #0759b2;
+  box-shadow: 0 9px 18px #075bb617;
+}
+.apk-app .login-apk .login-lock svg {
+  width: 22px;
+  height: 26px;
+}
+.apk-app .login-apk .login-card h1 {
+  display: block;
+  font-size: clamp(23px, 6.1vw, 28px);
+  line-height: 1.18;
+  margin: 0 0 9px;
+  letter-spacing: -0.7px;
+  color: #071d31;
+}
+.apk-app .login-apk .login-intro {
+  position: static;
+  width: auto;
+  max-width: 100%;
+  margin: 0 0 18px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #72808f;
+  letter-spacing: -0.25px;
+}
+.apk-app .login-apk .login-field {
+  min-height: 48px;
+  margin: 12px 0;
+  padding: 0 13px;
+  gap: 10px;
+  border: 1.5px solid #bcc7d3;
+  border-radius: 999px;
+  background: #fff;
+}
+.apk-app .login-apk .login-field input {
+  min-height: 44px;
+  padding: 9px 0 !important;
+  font-size: 16px;
+  color: #344c60;
+}
+.apk-app .login-apk .login-field input::placeholder {
+  color: #74818d;
+}
+.apk-app .login-apk .login-field > span {
+  color: #74818d;
+}
+.apk-app .login-apk .login-field > span svg {
+  width: 21px;
+  height: 23px;
+}
+.apk-app .login-apk .password-toggle {
+  min-width: 38px;
+  min-height: 44px;
+  color: #74818d;
+}
+.apk-app .login-apk .password-toggle svg {
+  width: 23px;
+  height: 23px;
+}
+.apk-app .login-apk .login-options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 12px 0;
+  font-size: 12px;
+  color: #334c5f;
+}
+.apk-app .login-apk .login-options label {
+  margin: 0;
+  min-height: 40px;
+  gap: 7px;
+  font: inherit;
+}
+.apk-app .login-apk .login-options input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #075dc2;
+}
+.apk-app .login-apk .login-forgot {
+  min-height: 40px;
+  font: inherit;
+  color: #738291;
+}
+.apk-app .login-apk .login-submit {
+  height: 50px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(105deg, #0754bc, #0564d9);
+  color: #fff;
+  font-size: 21px;
+  gap: 11px;
+  box-shadow: 0 12px 20px #0758be2d;
+}
+.apk-app .login-apk .login-submit svg {
+  width: 26px;
+  height: 26px;
+}
+.apk-app .login-apk .login-safety {
+  border: 0;
+  padding: 0;
+  margin-top: 22px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #72808b;
+  gap: 8px;
+}
+.apk-app .login-apk .login-safety svg {
+  width: 22px;
+  height: 25px;
+}
+.apk-app .login-apk #auth-error {
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 8px 0;
+}
+
+/* Celulares menores reservam o espaço do formulário antes da decoração. */
+@media (max-height: 760px) {
+  .apk-app .login-apk .login-hero {
+    height: clamp(90px, 20dvh, 150px);
+    padding-top: 16px;
+  }
+  .apk-app .login-apk .login-brand > .optimus-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+  .apk-app .login-apk .login-brand > span {
+    font-size: 27px;
+  }
+  .apk-app .login-apk .login-hero h2,
+  .apk-app .login-apk .apk-login-art,
+  .apk-app .login-apk .login-lock {
+    display: none;
+  }
+  .apk-app .login-apk .login-form-side {
+    align-items: center;
+    margin-top: 0;
+    padding: 8px 16px 16px;
+  }
+  .apk-app .login-apk .login-card {
+    padding: 20px 16px;
+  }
+}
+@media (max-height: 600px) {
+  .apk-app .login-apk .login-intro,
+  .apk-app .login-apk .login-safety {
+    display: none;
+  }
+  .apk-app .login-apk .login-card {
+    padding: 16px;
+  }
+  .apk-app .login-apk .login-card h1 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .apk-app .login-apk .login-field {
+    margin-block: 8px;
+    min-height: 44px;
+  }
+  .apk-app .login-apk .login-options {
+    margin-block: 8px;
+  }
+  .apk-app .login-apk .login-submit {
+    height: 46px;
+  }
+}
+/* Paisagem usa duas áreas, sem diminuir o tamanho dos campos de toque. */
+@media (max-height: 550px) and (min-width: 601px) {
+  .apk-app .login-apk .login-screen {
+    display: grid;
+    grid-template-columns: 36% minmax(0, 1fr);
+  }
+  .apk-app .login-apk .login-hero {
+    height: 100dvh;
+    padding: 30px 14px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .apk-app .login-apk .login-brand {
+    gap: 10px;
+  }
+  .apk-app .login-apk .login-brand > .optimus-logo {
+    width: 44px;
+    height: 44px;
+  }
+  .apk-app .login-apk .login-brand > span {
+    font-size: 25px;
+  }
+  .apk-app .login-apk .login-form-side {
+    padding: 12px;
+  }
+}
+/* Remove o brilho decorativo antigo e deixa a arte ocupar a largura dos celulares. */
+.apk-app .login-apk .login-hero::after {
+  display: none;
+}
+@media (max-width: 500px) {
+  .apk-app .login-apk .apk-login-art {
+    width: 100%;
+    max-width: none;
+  }
+}
+/* BLOCO — Marca no card do aplicativo; frase e dragão ocupam o espaço superior liberado. */
+.apk-app .login-apk .login-screen {
+  --apk-hero-size: clamp(205px, 29dvh, 285px);
+}
+.apk-app .login-apk .login-hero {
+  height: var(--apk-hero-size);
+  padding-top: 22px;
+}
+.apk-app .login-apk .login-hero h2 {
+  margin-top: 0;
+}
+.apk-app .login-apk .apk-login-art {
+  width: min(100%, calc((var(--apk-hero-size) - 100px) * 2.518));
+}
+.apk-app .login-apk .login-form-side {
+  align-items: center;
+  margin-top: 0;
+  padding-top: 12px;
+  padding-bottom: 24px;
+}
+.apk-app .login-apk .login-card > .login-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 18px;
+  gap: 14px;
+  color: #09243a;
+}
+.apk-app .login-apk .login-card > .login-brand > .optimus-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+}
+.apk-app .login-apk .login-card > .login-brand > span {
+  font-size: 28px;
+  line-height: 1.03;
+  letter-spacing: -0.8px;
+}
+.apk-app .login-apk .login-card > .login-brand strong {
+  color: #078d6c;
+}
+@media (max-width: 500px) and (min-height: 761px) {
+  .apk-app .login-apk .apk-login-art {
+    width: 100%;
+  }
+}
+@media (max-height: 760px) {
+  .apk-app .login-apk .login-screen {
+    --apk-hero-size: clamp(120px, 23dvh, 170px);
+  }
+  .apk-app .login-apk .login-hero {
+    height: var(--apk-hero-size);
+    padding-top: 16px;
+  }
+  .apk-app .login-apk .login-hero h2 {
+    display: block;
+    font-size: 20px;
+    margin: 0;
+  }
+  .apk-app .login-apk .apk-login-art {
+    display: block;
+    width: min(100%, calc((var(--apk-hero-size) - 80px) * 2.518));
+  }
+  .apk-app .login-apk .login-card > .login-brand {
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+  .apk-app .login-apk .login-card > .login-brand > .optimus-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+  .apk-app .login-apk .login-card > .login-brand > span {
+    font-size: 26px;
+  }
+}
+@media (max-height: 550px) and (min-width: 601px) {
+  .apk-app .login-apk .login-hero {
+    display: block;
+    height: 100dvh;
+    padding: 24px 14px;
+  }
+  .apk-app .login-apk .login-hero h2 {
+    font-size: 22px;
+  }
+  .apk-app .login-apk .apk-login-art {
+    width: 100%;
+  }
+  .apk-app .login-apk .login-form-side {
+    padding: 12px;
+  }
+}
+
+/* A ilustração termina junto ao card, sem espaço vazio entre os dois blocos. */
+@media (min-height: 551px), (max-width: 600px) {
+  .apk-app .login-apk .login-form-side {
+    align-items: flex-start;
+    padding-top: 0;
+    margin-top: -1px;
+  }
+}
+/* Em celulares baixos, amplia o dragão preservando espaço para o formulário. */
+@media (max-height: 760px) and (max-width: 600px) {
+  .apk-app .login-apk .login-screen {
+    --apk-hero-size: clamp(180px, 29dvh, 220px);
+  }
+}
+
+/* Baixa o card ampliando a área da ilustração; o recorte termina junto ao formulário. */
+@media (min-height: 551px), (max-width: 600px) {
+  .apk-app .login-apk .login-screen {
+    --apk-hero-size: clamp(250px, 37dvh, 365px);
+  }
+  .apk-app .login-apk .login-hero {
+    overflow: hidden;
+  }
+  .apk-app .login-apk .apk-login-art {
+    left: 50%;
+    right: auto;
+    width: min(125%, calc((var(--apk-hero-size) - 90px) * 2.518));
+    max-width: 700px;
+    transform: translateX(-50%);
+  }
+}
+/* Mantém os controles acessíveis nas telas mais baixas. */
+@media (max-height: 760px) and (max-width: 600px) {
+  .apk-app .login-apk .login-screen {
+    --apk-hero-size: clamp(210px, 32dvh, 240px);
+  }
+}
+
+/* Cartões do app: dimensões e conteúdo acompanham a largura útil de cada tela. */
+.apk-app .credit-card-item {
+  width: 100%;
+  min-width: 0;
+  container-type: inline-size;
+}
+.apk-app .credit-card-art {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 1.586;
+  padding: clamp(12px, 4.5cqw, 18px);
+  gap: clamp(10px, 3.5cqw, 18px);
+}
+.apk-app .credit-card-bank {
+  flex: 1;
+  min-width: 0;
+}
+.apk-app .credit-card-bank span {
+  overflow-wrap: anywhere;
+}
+.apk-app .credit-card-bank img {
+  flex-shrink: 0;
+  width: clamp(30px, 12cqw, 45px);
+  height: clamp(30px, 12cqw, 45px);
+}
+.apk-app .credit-card-number {
+  font-size: clamp(11px, 4.3cqw, 17px);
+  letter-spacing: 0.6px;
+}
+.apk-app .credit-card-bottom > div:first-child {
+  flex: 1;
+  min-width: 0;
+}
+.apk-app .credit-card-bottom strong {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* A abertura Android usa somente a apresentação; consultas continuam em segundo plano. */
+.apk-app #app-loader {
+  display: none;
+}
+
+/* Resumo estratégico do app: resultado e entradas legíveis em celulares estreitos. */
+@media (max-width: 400px) {
+  .apk-app .monthly-summary-panel #monthly-summary > .summary-opening,
+  .apk-app .monthly-summary-panel #monthly-summary > .summary-incoming,
+  .apk-app .monthly-summary-panel #monthly-summary > .summary-balance,
+  .apk-app .monthly-summary-panel #monthly-summary > .summary-negative {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .apk-app .monthly-summary-panel #monthly-summary > .summary-opening strong,
+  .apk-app .monthly-summary-panel #monthly-summary > .summary-incoming strong,
+  .apk-app .monthly-summary-panel #monthly-summary > .summary-balance strong,
+  .apk-app .monthly-summary-panel #monthly-summary > .summary-negative strong {
+    text-align: left;
+  }
+}
+
+/* Mantém cada valor monetário inteiro; o texto descritivo usa o espaço restante. */
+.apk-app .monthly-summary-panel .expense strong {
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}

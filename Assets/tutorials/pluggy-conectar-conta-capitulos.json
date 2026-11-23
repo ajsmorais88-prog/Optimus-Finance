@@ -1,0 +1,82 @@
+[
+  {
+    "start": 0,
+    "duration": 18.75,
+    "title": "Acesse o Dashboard"
+  },
+  {
+    "start": 18.75,
+    "duration": 22.625,
+    "title": "Crie seu cadastro"
+  },
+  {
+    "start": 41.375,
+    "duration": 17.25,
+    "title": "Abra Aplicações"
+  },
+  {
+    "start": 58.625,
+    "duration": 18.0,
+    "title": "Dê um nome à aplicação"
+  },
+  {
+    "start": 76.625,
+    "duration": 19.625,
+    "title": "Localize o Client ID"
+  },
+  {
+    "start": 96.25,
+    "duration": 25.375,
+    "title": "Guarde o Client Secret"
+  },
+  {
+    "start": 121.625,
+    "duration": 18.125,
+    "title": "Inicie o Demo"
+  },
+  {
+    "start": 139.75,
+    "duration": 18.5,
+    "title": "Conectar Conta"
+  },
+  {
+    "start": 158.25,
+    "duration": 20.5,
+    "title": "Autorize pelo fluxo oficial"
+  },
+  {
+    "start": 178.75,
+    "duration": 18.125,
+    "title": "Selecione o item conectado"
+  },
+  {
+    "start": 196.875,
+    "duration": 19.625,
+    "title": "Copie o Item ID"
+  },
+  {
+    "start": 216.5,
+    "duration": 23.75,
+    "title": "No Optimus: informe o Client ID"
+  },
+  {
+    "start": 240.25,
+    "duration": 16.625,
+    "title": "Informe o Client Secret"
+  },
+  {
+    "start": 256.875,
+    "duration": 18.625,
+    "title": "Salve as credenciais da aplicação"
+  },
+  {
+    "start": 275.5,
+    "duration": 22.25,
+    "title": "Cadastre a conexão e o Item ID"
+  },
+  {
+    "start": 297.75,
+    "duration": 24.0,
+    "title": "Salve e sincronize sua conta"
+  }
+]
